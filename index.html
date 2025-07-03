@@ -311,6 +311,21 @@
       animation: fadeInUp 0.8s ease-out 0.4s both;
     }
 
+    /* Mobile adjustments for value props */
+    @media (max-width: 768px) {
+      .value-props {
+        gap: 15px;
+        margin: 25px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .value-props {
+        gap: 12px;
+        margin: 20px 0;
+      }
+    }
+
     .value-prop {
       background: var(--glass-bg);
       border: 1px solid var(--border-subtle);
