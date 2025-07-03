@@ -130,14 +130,12 @@
       justify-self: start;
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--gradient-adhd);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .logo-container a {
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container a:hover {
+      transform: scale(1.05);
     }
 
     /* House icon in the center */
@@ -186,40 +184,18 @@
         gap: 15px;
       }
 
-      /* Stack logo and house icon together on left */
+      /* Logo stays on left */
       .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 12px;
         justify-self: start;
       }
 
+      .logo-container a img {
+        height: 36px;
+      }
+
+      /* Hide the center house icon on mobile since logo serves as home button */
       .house-icon-center {
-        display: none; /* Hide the center house icon on mobile */
-      }
-
-      /* Add house icon to logo container on mobile */
-      .logo-container::before {
-        content: '';
-        width: 24px;
-        height: 24px;
-        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 45 L50 20 L80 45 L80 80 L20 80 Z' fill='none' stroke='%23a0a8b8' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/%3E%3Crect x='42' y='60' width='16' height='20' fill='none' stroke='%23a0a8b8' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
-        background-size: contain;
-        flex-shrink: 0;
-        transition: transform 0.3s ease;
-      }
-
-      .logo-container:hover::before {
-        transform: scale(1.05);
-      }
-
-      .house-logo {
-        width: 28px;
-        height: 28px;
-      }
-
-      .logo {
-        font-size: 1.2rem;
+        display: none;
       }
 
       .cta-header {
@@ -236,13 +212,8 @@
         gap: 10px;
       }
 
-      .logo-container::before {
-        width: 20px;
-        height: 20px;
-      }
-
-      .logo {
-        font-size: 1rem;
+      .logo-container a img {
+        height: 32px;
       }
 
       .cta-header {
@@ -1040,8 +1011,9 @@
       <div class="header-content">
         <!-- Logo on the left -->
         <div class="logo-container">
-          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" style="height: 40px; width: auto; transition: transform 0.3s ease;">
-          <div class="logo">925 ADHD</div>
+          <a href="https://925adhd.com" style="display: flex; align-items: center; gap: 8px; text-decoration: none; outline: none; -webkit-tap-highlight-color: transparent;">
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" style="height: 40px; width: auto; transition: transform 0.3s ease;">
+          </a>
         </div>
         
         <!-- House icon in the center -->
