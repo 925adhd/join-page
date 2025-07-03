@@ -104,16 +104,7 @@
       padding: 0 20px;
     }
 
-    .logo-container a:hover img,
-    .logo-container a:hover svg {
-      transform: scale(1.05);
-    }
-
-    .logo-container a:active {
-      transform: scale(0.98);
-    }
-
-    /* Header - UPDATED FOR MOBILE */
+    /* Header - UPDATED FOR NEW LAYOUT */
     .header {
       position: sticky;
       top: 0;
@@ -124,22 +115,19 @@
     }
 
     .header-content {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding: 15px 0;
+      gap: 20px;
     }
 
+    /* Logo on the left */
     .logo-container {
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .house-logo {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
+      justify-self: start;
     }
 
     .logo {
@@ -152,6 +140,26 @@
       background-clip: text;
     }
 
+    /* House icon in the center */
+    .house-icon-center {
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .house-logo {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .house-logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* CTA button on the right */
     .cta-header {
       background: var(--gradient-primary);
       color: white;
@@ -162,6 +170,7 @@
       font-size: 1rem;
       transition: all 0.3s ease;
       box-shadow: var(--shadow-soft);
+      justify-self: end;
     }
 
     .cta-header:hover {
@@ -173,11 +182,12 @@
     @media (max-width: 768px) {
       .header-content {
         padding: 12px 0;
+        gap: 15px;
       }
 
       .house-logo {
-        width: 20px;
-        height: 20px;
+        width: 28px;
+        height: 28px;
       }
 
       .logo {
@@ -192,9 +202,14 @@
     }
 
     @media (max-width: 480px) {
+      .header-content {
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+      }
+
       .house-logo {
-        width: 18px;
-        height: 18px;
+        width: 24px;
+        height: 24px;
       }
 
       .logo {
@@ -994,9 +1009,16 @@
   <header class="header">
     <div class="container">
       <div class="header-content">
+        <!-- Logo on the left -->
         <div class="logo-container">
-          <a href="https://925adhd.com" style="display: block; position: relative; text-decoration: none; outline: none; -webkit-tap-highlight-color: transparent;">
-            <svg class="house-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -8px; left: -8px; z-index: 1; transition: transform 0.3s ease;">
+          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" style="height: 40px; width: auto; transition: transform 0.3s ease;">
+          <div class="logo">925 ADHD</div>
+        </div>
+        
+        <!-- House icon in the center -->
+        <div class="house-icon-center">
+          <a href="https://925adhd.com" style="display: block; text-decoration: none; outline: none; -webkit-tap-highlight-color: transparent;">
+            <svg class="house-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <!-- House outline -->
               <path d="M20 45 L50 20 L80 45 L80 80 L20 80 Z" 
                     fill="none" 
@@ -1012,9 +1034,10 @@
                     stroke-width="2.5" 
                     stroke-linejoin="round"/>
             </svg>
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" style="height: 40px; width: auto; transition: transform 0.3s ease; margin-left: 16px; display: block;">
           </a>
         </div>
+        
+        <!-- CTA button on the right -->
         <a href="https://buy.stripe.com/9B67sMcfH8FIfwxbiU7Zu00" target="_blank" rel="noopener noreferrer" class="cta-header">💸 Get the 925 ADHD App →</a>
       </div>
     </div>
@@ -1364,109 +1387,4 @@
       modalImg.classList.remove('zoomed');
       
       // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('imageModal');
-      modal.style.display = 'none';
-      
-      // Restore body scroll
-      document.body.style.overflow = 'auto';
-    }
-
-    // Image zoom functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const modalImg = document.getElementById('modalImg');
-      
-      // Click to zoom
-      modalImg.addEventListener('click', function(e) {
-        e.stopPropagation();
-        
-        if (!isZoomed) {
-          // Zoom in to 2x
-          currentScale = 2;
-          isZoomed = true;
-          modalImg.classList.add('zoomed');
-        } else {
-          // Zoom out
-          currentScale = 1;
-          currentX = 0;
-          currentY = 0;
-          isZoomed = false;
-          modalImg.classList.remove('zoomed');
-        }
-        
-        modalImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
-      });
-
-      // Touch events for mobile
-      let initialDistance = 0;
-      let initialScale = 1;
-
-      modalImg.addEventListener('touchstart', function(e) {
-        if (e.touches.length === 2) {
-          e.preventDefault();
-          initialDistance = getDistance(e.touches[0], e.touches[1]);
-          initialScale = currentScale;
-        }
-      });
-
-      modalImg.addEventListener('touchmove', function(e) {
-        if (e.touches.length === 2) {
-          e.preventDefault();
-          const distance = getDistance(e.touches[0], e.touches[1]);
-          const scale = (distance / initialDistance) * initialScale;
-          currentScale = Math.min(Math.max(1, scale), 3);
-          modalImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
-        }
-      });
-
-      function getDistance(touch1, touch2) {
-        const dx = touch1.clientX - touch2.clientX;
-        const dy = touch1.clientY - touch2.clientY;
-        return Math.sqrt(dx * dx + dy * dy);
-      }
-
-      // Drag functionality for zoomed images
-      let isDragging = false;
-      let dragStartX = 0;
-      let dragStartY = 0;
-      let dragStartTranslateX = 0;
-      let dragStartTranslateY = 0;
-
-      modalImg.addEventListener('mousedown', function(e) {
-        if (currentScale > 1) {
-          isDragging = true;
-          dragStartX = e.clientX;
-          dragStartY = e.clientY;
-          dragStartTranslateX = currentX;
-          dragStartTranslateY = currentY;
-          modalImg.style.cursor = 'grabbing';
-          e.preventDefault();
-        }
-      });
-
-      document.addEventListener('mousemove', function(e) {
-        if (isDragging && currentScale > 1) {
-          const deltaX = e.clientX - dragStartX;
-          const deltaY = e.clientY - dragStartY;
-          currentX = dragStartTranslateX + deltaX;
-          currentY = dragStartTranslateY + deltaY;
-          modalImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
-        }
-      });
-
-      document.addEventListener('mouseup', function() {
-        if (isDragging) {
-          isDragging = false;
-          modalImg.style.cursor = currentScale > 1 ? 'grab' : 'zoom-in';
-        }
-      });
-
-      // Set initial cursor
-      modalImg.style.cursor = 'zoom-in';
-    });
-  </script>
-</body>
-</html>
+      document.body.style.overflow = 'hidden
