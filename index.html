@@ -332,32 +332,29 @@
       }
     }
 
-    /* Desktop layout - stacked images with arrow navigation */
+    /* Desktop layout - show both images side by side */
     @media (min-width: 769px) {
       .image-gallery {
-        max-width: 400px;
+        max-width: 800px;
       }
       
       .gallery-container {
-        /* Keep transform functionality for desktop */
+        transform: none !important;
         cursor: default;
+        gap: 20px;
       }
       
       .gallery-slide {
-        min-width: 100%;
+        min-width: calc(50% - 10px);
+        flex: 1;
       }
       
       .gallery-nav {
-        display: flex; /* Show arrows on desktop */
+        display: none;
       }
       
       .gallery-dots {
-        display: none; /* Hide dots on desktop */
-      }
-      
-      /* Disable mouse drag on desktop - arrows only */
-      .gallery-container:active {
-        cursor: default;
+        display: none;
       }
     }
     
