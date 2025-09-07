@@ -582,6 +582,94 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+
+    /* Free Preview Section Styles */
+    .free-preview-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, rgba(79,70,229,.08) 0%, rgba(6,182,212,.05) 100%);
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .free-preview-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .free-preview-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--accent-secondary);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .free-preview-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .free-preview-cta {
+      background: var(--gradient-primary);
+      color: #fff;
+      padding: 18px 35px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: .3s;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-medium);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .free-preview-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .free-preview-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .free-preview-feature {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .free-preview-feature h4 {
+      color: var(--accent-secondary);
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .free-preview-feature p {
+      color: var(--text-secondary);
+      font-size: .9rem;
+      line-height: 1.4;
+    }
     
     .offer-section { 
       padding: 80px 0; 
@@ -843,6 +931,8 @@
       .plan-steps { grid-template-columns: 1fr; }
       .relief-headline { font-size: 2rem; }
       .section-title { font-size: 2rem; }
+      .free-preview-title { font-size: 1.8rem; }
+      .free-preview-features { grid-template-columns: 1fr; gap: 15px; }
       .stats-grid { grid-template-columns: 1fr; gap: 15px; }
       .stat-number { font-size: 1.7rem; }
       .testimonial-grid, .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -872,6 +962,7 @@
       .hero-headline { font-size: 2rem; }
       .relief-headline { font-size: 1.7rem; }
       .section-title { font-size: 1.7rem; }
+      .free-preview-title { font-size: 1.6rem; }
       .pricing-card { padding: 20px; }
       .pricing-image { height: 220px; }
       .pricing-amount { font-size: 2rem; }
@@ -1158,6 +1249,42 @@
         </div>
       </div>
     </article>
+
+    <!-- FREE PREVIEW Section -->
+    <section class="free-preview-section" aria-labelledby="free-preview-title">
+      <div class="container">
+        <div class="free-preview-container">
+          <h2 id="free-preview-title" class="free-preview-title">Wanna Sneak Peek of the App?</h2>
+          <p class="free-preview-subtitle">
+            Try our mini version for free! Get access to a limited selection of verified earning sites and see exactly how our ADHD‑friendly approach works before you commit to the full version.
+          </p>
+          
+          <a href="https://free.925adhd.com" 
+             target="_blank" 
+             rel="noopener" 
+             class="free-preview-cta" 
+             onclick="trackCTA('free-preview','mini-version',0)"
+             aria-label="Try the free mini version">
+            🔍 Try Mini Version FREE
+          </a>
+
+          <div class="free-preview-features">
+            <div class="free-preview-feature">
+              <h4>✨ Free Sample Sites</h4>
+              <p>Access to 10+ carefully selected earning sites to test our approach</p>
+            </div>
+            <div class="free-preview-feature">
+              <h4>🎯 No Risk Trial</h4>
+              <p>See if our system works for you before upgrading to the full app</p>
+            </div>
+          </div>
+
+          <p style="color: var(--text-muted); font-size: .9rem; margin-top: 25px; font-style: italic;">
+            Ready for the full experience? Upgrade anytime to unlock all 50+ sites, exclusive guides, and premium features.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- FAQ (visual only; schema is JSON-LD above) -->
         <section class="faq-section" aria-labelledby="faq-title">
