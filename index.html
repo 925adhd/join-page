@@ -325,8 +325,8 @@
     }
     .hero-cta-secondary:hover { color: var(--accent-primary); }
 
-    /* Image Gallery Styles */
-    .image-gallery {
+    /* Image Gallery Styles - Used for all galleries */
+    .image-gallery, .proof-gallery, .pricing-gallery {
       position: relative;
       max-width: 400px;
       margin: 30px auto;
@@ -334,24 +334,24 @@
       width: 100%;
     }
 
-    .gallery-container {
+    .gallery-container, .proof-gallery-container, .pricing-gallery-container {
       display: flex;
       transition: transform 0.3s ease-in-out;
       cursor: grab;
       width: 100%;
     }
 
-    .gallery-container:active {
+    .gallery-container:active, .proof-gallery-container:active, .pricing-gallery-container:active {
       cursor: grabbing;
     }
 
-    .gallery-slide {
+    .gallery-slide, .proof-gallery-slide, .pricing-gallery-slide {
       min-width: 100%;
       position: relative;
       flex-shrink: 0;
     }
 
-    .gallery-slide img {
+    .gallery-slide img, .proof-gallery-slide img {
       width: 100%;
       height: auto;
       display: block;
@@ -359,7 +359,7 @@
     }
 
     /* Navigation dots */
-    .gallery-dots {
+    .gallery-dots, .proof-gallery-dots, .pricing-gallery-dots {
       display: flex;
       justify-content: center;
       gap: 8px;
@@ -367,7 +367,7 @@
       width: 100%;
     }
 
-    .dot {
+    .dot, .proof-dot, .pricing-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -378,17 +378,17 @@
       flex-shrink: 0;
     }
 
-    .dot.active {
+    .dot.active, .proof-dot.active, .pricing-dot.active {
       background: var(--accent-secondary);
       opacity: 1;
     }
 
-    .dot:hover {
+    .dot:hover, .proof-dot:hover, .pricing-dot:hover {
       opacity: 0.8;
     }
 
     /* Navigation arrows */
-    .gallery-nav {
+    .gallery-nav, .proof-gallery-nav, .pricing-gallery-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -409,31 +409,31 @@
       outline: none;
     }
 
-    .gallery-nav:hover {
+    .gallery-nav:hover, .proof-gallery-nav:hover, .pricing-gallery-nav:hover {
       background: rgba(0,0,0,0.7);
       opacity: 1;
     }
 
-    .gallery-nav:focus {
+    .gallery-nav:focus, .proof-gallery-nav:focus, .pricing-gallery-nav:focus {
       outline: none;
     }
 
-    .gallery-nav.prev {
+    .gallery-nav.prev, .proof-gallery-nav.prev, .pricing-gallery-nav.prev {
       left: 10px;
     }
 
-    .gallery-nav.next {
+    .gallery-nav.next, .proof-gallery-nav.next, .pricing-gallery-nav.next {
       right: 10px;
     }
 
     /* Touch indicators for mobile */
     @media (hover: none) {
-      .gallery-nav {
+      .gallery-nav, .proof-gallery-nav, .pricing-gallery-nav {
         opacity: 0.4;
       }
     }
 
-    /* Desktop layout - show both images side by side */
+    /* Desktop layout - show multiple images side by side */
     @media (min-width: 769px) {
       .image-gallery {
         max-width: 800px;
@@ -455,6 +455,56 @@
       }
       
       .gallery-dots {
+        display: none;
+      }
+
+      /* Proof gallery desktop layout - both images visible */
+      .proof-gallery {
+        max-width: 800px;
+      }
+      
+      .proof-gallery-container {
+        transform: none !important;
+        cursor: default;
+        gap: 20px;
+      }
+      
+      .proof-gallery-slide {
+        min-width: calc(50% - 10px);
+        flex: 1;
+      }
+      
+      .proof-gallery-nav {
+        display: none;
+      }
+      
+      .proof-gallery-dots {
+        display: none;
+      }
+
+      /* Pricing gallery desktop layout - all cards visible in grid */
+      .pricing-gallery {
+        max-width: 1000px;
+      }
+      
+      .pricing-gallery-container {
+        transform: none !important;
+        cursor: default;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+        gap: 30px;
+      }
+      
+      .pricing-gallery-slide {
+        min-width: auto;
+        flex: none;
+      }
+      
+      .pricing-gallery-nav {
+        display: none;
+      }
+      
+      .pricing-gallery-dots {
         display: none;
       }
     }
@@ -583,10 +633,9 @@
       overflow-wrap: break-word;
     }
 
-    /* Free Preview Section Styles */
+    /* Free Preview Section Styles - BACKGROUND REMOVED */
     .free-preview-section {
       padding: 60px 0;
-      background: linear-gradient(135deg, rgba(79,70,229,.08) 0%, rgba(6,182,212,.05) 100%);
       width: 100%;
       overflow: hidden;
       border-top: 1px solid var(--border-subtle);
@@ -676,17 +725,6 @@
       background: var(--secondary-bg);
       width: 100%;
       overflow: hidden;
-    }
-    
-    .pricing-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); 
-      gap: 30px; 
-      margin-top: 50px; 
-      max-width: 1000px; 
-      margin-left: auto; 
-      margin-right: auto;
-      width: 100%;
     }
     
     .pricing-card { 
@@ -864,29 +902,83 @@
       width: 100%;
     }
     
+    /* Updated FAQ Styles for Interactive Accordion */
     .faq-item { 
       background: var(--glass-bg); 
       border: 1px solid var(--border-subtle); 
       border-radius: 12px; 
-      padding: 25px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
       width: 100%;
       box-sizing: border-box;
     }
-    
+
+    .faq-item:hover {
+      border-color: var(--border-bright);
+      background: var(--card-bg);
+    }
+
+    .faq-item.active {
+      border-color: var(--accent-secondary);
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
+    }
+
     .faq-question { 
       font-weight: 700; 
       font-size: 1.1rem; 
-      margin-bottom: 12px; 
+      margin: 0;
+      padding: 25px;
       color: var(--accent-secondary);
       word-wrap: break-word;
       overflow-wrap: break-word;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
     }
-    
+
+    .faq-question::after {
+      content: '▼';
+      font-size: 0.9rem;
+      color: var(--accent-secondary);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 15px;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(180deg);
+    }
+
     .faq-answer { 
       color: var(--text-secondary); 
       line-height: 1.6;
       word-wrap: break-word;
       overflow-wrap: break-word;
+      padding: 0 25px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      opacity: 0;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 25px 25px;
+      opacity: 1;
+    }
+
+    /* Focus styles for accessibility */
+    .faq-item:focus-visible {
+      outline: 2px solid var(--accent-secondary);
+      outline-offset: 2px;
+    }
+
+    /* Ensure proper spacing */
+    .faq-answer p {
+      margin: 0;
     }
     
     .modal { display: none; position: fixed; z-index: 1000; inset: 0; background-color: rgba(0,0,0,.95); backdrop-filter: blur(10px); padding: 20px; box-sizing: border-box; }
@@ -925,7 +1017,7 @@
         align-items: center; 
         gap: 0.5rem; 
       }
-      .image-gallery {
+      .image-gallery, .proof-gallery, .pricing-gallery {
         max-width: 90%;
       }
       .plan-steps { grid-template-columns: 1fr; }
@@ -935,7 +1027,7 @@
       .free-preview-features { grid-template-columns: 1fr; gap: 15px; }
       .stats-grid { grid-template-columns: 1fr; gap: 15px; }
       .stat-number { font-size: 1.7rem; }
-      .testimonial-grid, .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+      .testimonial-grid { grid-template-columns: 1fr; gap: 20px; }
       .pricing-card {
         margin: 0;
         width: 100%;
@@ -955,6 +1047,16 @@
       }
       
       .back-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.1rem; }
+
+      /* Mobile FAQ adjustments */
+      .faq-question { 
+        font-size: 1rem;
+        padding: 20px;
+      }
+      
+      .faq-item.active .faq-answer {
+        padding: 0 20px 20px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -978,6 +1080,16 @@
       }
       
       .back-to-top { width: 45px; height: 45px; bottom: 15px; right: 15px; font-size: 1rem; }
+
+      /* Smaller FAQ styling */
+      .faq-question { 
+        font-size: 0.95rem;
+        padding: 18px;
+      }
+      
+      .faq-item.active .faq-answer {
+        padding: 0 18px 18px;
+      }
     }
     
     @media (max-width: 360px) { 
@@ -985,6 +1097,16 @@
       .bonus-book-image { display: none !important; }
       .pricing-card { padding: 15px; }
       .hero-cta-primary { padding: 10px 20px; }
+
+      /* Very small screen FAQ */
+      .faq-question { 
+        font-size: 0.9rem;
+        padding: 15px;
+      }
+      
+      .faq-item.active .faq-answer {
+        padding: 0 15px 15px;
+      }
     }
   </style>
 </head>
@@ -1045,18 +1167,18 @@
         </div>
         
         <!-- Navigation arrows -->
-        <button class="gallery-nav prev" onclick="changeSlide(-1)" aria-label="Previous image">
+        <button class="gallery-nav prev" onclick="changeSlide(-1, 'hero')" aria-label="Previous image">
           ‹
         </button>
-        <button class="gallery-nav next" onclick="changeSlide(1)" aria-label="Next image">
+        <button class="gallery-nav next" onclick="changeSlide(1, 'hero')" aria-label="Next image">
           ›
         </button>
       </div>
 
       <!-- Gallery dots -->
       <div class="gallery-dots" role="tablist" aria-label="Image gallery navigation">
-        <span class="dot active" onclick="currentSlide(1)" role="tab" aria-label="Image 1" tabindex="0"></span>
-        <span class="dot" onclick="currentSlide(2)" role="tab" aria-label="Image 2" tabindex="0"></span>
+        <span class="dot active" onclick="currentSlide(1, 'hero')" role="tab" aria-label="Image 1" tabindex="0"></span>
+        <span class="dot" onclick="currentSlide(2, 'hero')" role="tab" aria-label="Image 2" tabindex="0"></span>
       </div>
       
       <div class="container">
@@ -1125,11 +1247,48 @@
     <article id="proof" class="proof-section">
       <div class="container">
         <header><h2 class="section-title">Real Payout Proof (Not Just Claims)</h2></header>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; margin-bottom:60px;">
-          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/micro%20earners-a9849c1.png" alt="Micro earnings payout proof showing various site payments" style="width:100%; height:auto; border-radius:12px; cursor:pointer; border:1px solid var(--accent-success);" onclick="openModal(this.src)" loading="lazy" decoding="async" width="900" height="600">
-          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/higher%20earners-5fa5cb1.png" alt="Higher earnings payout proof showing larger site payments" style="width:100%; height:auto; border-radius:12px; cursor:pointer; border:1px solid var(--accent-success);" onclick="openModal(this.src)" loading="lazy" decoding="async" width="900" height="600">
+        
+        <!-- Swipeable Proof Gallery -->
+        <div class="proof-gallery" role="region" aria-label="Payout proof gallery">
+          <div class="proof-gallery-container" id="proofGalleryContainer">
+            <div class="proof-gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/micro%20earners-a9849c1.png" 
+                   alt="Micro earnings payout proof showing various site payments" 
+                   style="width:100%; height:auto; border-radius:12px; cursor:pointer; border:1px solid var(--accent-success);" 
+                   onclick="openModal(this.src)" 
+                   loading="lazy" 
+                   decoding="async" 
+                   width="900" 
+                   height="600">
+            </div>
+            <div class="proof-gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/higher%20earners-5fa5cb1.png" 
+                   alt="Higher earnings payout proof showing larger site payments" 
+                   style="width:100%; height:auto; border-radius:12px; cursor:pointer; border:1px solid var(--accent-success);" 
+                   onclick="openModal(this.src)" 
+                   loading="lazy" 
+                   decoding="async" 
+                   width="900" 
+                   height="600">
+            </div>
+          </div>
+          
+          <!-- Navigation arrows -->
+          <button class="proof-gallery-nav prev" onclick="changeSlide(-1, 'proof')" aria-label="Previous proof image">
+            ‹
+          </button>
+          <button class="proof-gallery-nav next" onclick="changeSlide(1, 'proof')" aria-label="Next proof image">
+            ›
+          </button>
         </div>
-        <div class="testimonial-grid">
+
+        <!-- Gallery dots -->
+        <div class="proof-gallery-dots" role="tablist" aria-label="Proof gallery navigation">
+          <span class="proof-dot active" onclick="currentSlide(1, 'proof')" role="tab" aria-label="Proof image 1" tabindex="0"></span>
+          <span class="proof-dot" onclick="currentSlide(2, 'proof')" role="tab" aria-label="Proof image 2" tabindex="0"></span>
+        </div>
+
+        <div class="testimonial-grid" style="margin-top: 60px;">
           <div class="testimonial-card">
             <div class="quote-mark">"</div>
             <div style="display:flex; align-items:flex-start; gap:15px; padding-left:20px;">
@@ -1193,62 +1352,88 @@
           <h2 class="section-title">Skip the Overwhelm — Choose Your Clear Path</h2>
           <p style="text-align:center; color: var(--text-secondary); font-size:1.2rem; margin-bottom:20px;">Stop overthinking which package to pick. Start with what fits your budget. You can always upgrade later.</p>
         </header>
-        <div class="pricing-grid">
-          <div id="starter-package" class="pricing-card popular">
-            <div class="pricing-badge">MOST POPULAR</div>
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Starter App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-            <h3 class="pricing-title" style="color: var(--accent-success);">Starter App</h3>
-            <div class="feature-list">
-              <div class="feature-item"><span class="feature-icon">✓</span><span>ADHD‑Friendly Web App with 50+ Pre‑Researched Sites 💸</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community — a space just for members who get it</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
+        
+        <!-- Swipeable Pricing Gallery -->
+        <div class="pricing-gallery" role="region" aria-label="Pricing packages gallery">
+          <div class="pricing-gallery-container" id="pricingGalleryContainer">
+            <div class="pricing-gallery-slide">
+              <div id="starter-package" class="pricing-card popular">
+                <div class="pricing-badge">MOST POPULAR</div>
+                <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Starter App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
+                <h3 class="pricing-title" style="color: var(--accent-success);">Starter App</h3>
+                <div class="feature-list">
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>ADHD‑Friendly Web App with 50+ Pre‑Researched Sites 💸</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community — a space just for members who get it</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
+                </div>
+                <div class="pricing-amount">$9.25</div>
+                <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
+                <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't cut through your decision paralysis and help you start earning, email us for a full refund—no forms, no hoops.</div>
+                <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','starter',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
+              </div>
             </div>
-            <div class="pricing-amount">$9.25</div>
-            <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
-            <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't cut through your decision paralysis and help you start earning, email us for a full refund—no forms, no hoops.</div>
-            <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','starter',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
+            <div class="pricing-gallery-slide">
+              <div id="pro-package" class="pricing-card best-value">
+                <div class="pricing-badge">BEST VALUE</div>
+                <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/popreview-5b6b090.png" alt="Pro Toolkit package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
+                <h3 class="pricing-title" style="color: var(--accent-primary);">Pro Toolkit</h3>
+                <div class="feature-list">
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Everything in Starter App</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Unlock ADHD Tools & Focus Productivity Section</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Site Match Quiz (No More Guessing Which Site to Try)</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Priority Discord Support and Enhanced Role Styles</span></div>
+                </div>
+                <div class="pricing-amount">$29</div>
+                <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
+                <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't eliminate your decision fatigue and help you earn, email us for a full refund—no forms, no hoops.</div>
+                <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','pro',29)" aria-label="Get the decision-free pro toolkit">🎯 Get Maximum Clarity</a>
+              </div>
+            </div>
+            <div class="pricing-gallery-slide">
+              <div id="entrepreneur-package" class="pricing-card entrepreneur">
+                <div class="pricing-badge">ENTREPRENEUR</div>
+                <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/premiun-0891a5d.png" alt="Entrepreneur Accelerator package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
+                <h3 class="pricing-title" style="color: var(--accent-warning);">ADHD Entrepreneur Accelerator</h3>
+                <p style="color: var(--text-secondary); font-size: .95rem; margin-bottom: 20px; line-height: 1.4;">Ready to go beyond earning sites? Build your personal brand while earning from sites, then transition to becoming your own boss — no analysis paralysis, just clear systems.</p>
+                <div class="bonus-offer">
+                  <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/100M%20Money%20Models.webp/:/rs=h:175,m" alt="Bonus entrepreneur book" class="bonus-book-image" loading="lazy" decoding="async" width="120" height="175">
+                  <div style="color: var(--accent-danger); font-weight: 700; font-size: .9rem; margin-bottom: 8px;">🎁 Bonus Book Vouchers: <span id="voucher-count">14</span> Available</div>
+                  <div style="color: var(--text-secondary); font-size: .85rem; line-height: 1.4; margin-bottom: 6px;">Free entrepreneur book voucher included (you just pay shipping). Limited quantity available.</div>
+                  <div style="color: var(--text-muted); font-size: .75rem;"><strong>*Book voucher + shipping only</strong></div>
+                </div>
+                <div class="feature-list">
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Everything in Pro Toolkit</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>7 Day Personal Brand Sprint System</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>50+ Social Media Templates</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Content Calendar & Batch Creation System</span></div>
+                  <div class="feature-item"><span class="feature-icon">✓</span><span>Client Outreach Email Templates</span></div>
+                  <div class="feature-item" style="color: var(--accent-danger); font-weight: 600;"><span class="feature-icon">🎁</span><span>BONUS: Free Entrepreneur Book Voucher</span></div>
+                </div>
+                <div class="pricing-amount">$129</div>
+                <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
+                <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't help you build momentum in both earning and business building, email us for a full refund—no forms, no hoops.</div>
+                <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','entrepreneur',129); decrementVoucher();" aria-label="Build my ADHD business with clear systems">🚀 Build My ADHD Business</a>
+              </div>
+            </div>
           </div>
-          <div id="pro-package" class="pricing-card best-value">
-            <div class="pricing-badge">BEST VALUE</div>
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/popreview-5b6b090.png" alt="Pro Toolkit package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-            <h3 class="pricing-title" style="color: var(--accent-primary);">Pro Toolkit</h3>
-            <div class="feature-list">
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Everything in Starter App</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Unlock ADHD Tools & Focus Productivity Section</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Site Match Quiz (No More Guessing Which Site to Try)</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Priority Discord Support and Enhanced Role Styles</span></div>
-            </div>
-            <div class="pricing-amount">$29</div>
-            <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
-            <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't eliminate your decision fatigue and help you earn, email us for a full refund—no forms, no hoops.</div>
-            <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','pro',29)" aria-label="Get the decision-free pro toolkit">🎯 Get Maximum Clarity</a>
-          </div>
-          <div id="entrepreneur-package" class="pricing-card entrepreneur">
-            <div class="pricing-badge">ENTREPRENEUR</div>
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/premiun-0891a5d.png" alt="Entrepreneur Accelerator package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-            <h3 class="pricing-title" style="color: var(--accent-warning);">ADHD Entrepreneur Accelerator</h3>
-            <p style="color: var(--text-secondary); font-size: .95rem; margin-bottom: 20px; line-height: 1.4;">Ready to go beyond earning sites? Build your personal brand while earning from sites, then transition to becoming your own boss — no analysis paralysis, just clear systems.</p>
-            <div class="bonus-offer">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/100M%20Money%20Models.webp/:/rs=h:175,m" alt="Bonus entrepreneur book" class="bonus-book-image" loading="lazy" decoding="async" width="120" height="175">
-              <div style="color: var(--accent-danger); font-weight: 700; font-size: .9rem; margin-bottom: 8px;">🎁 Bonus Book Vouchers: <span id="voucher-count">14</span> Available</div>
-              <div style="color: var(--text-secondary); font-size: .85rem; line-height: 1.4; margin-bottom: 6px;">Free entrepreneur book voucher included (you just pay shipping). Limited quantity available.</div>
-              <div style="color: var(--text-muted); font-size: .75rem;"><strong>*Book voucher + shipping only</strong></div>
-            </div>
-            <div class="feature-list">
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Everything in Pro Toolkit</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>7 Day Personal Brand Sprint System</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>50+ Social Media Templates</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Content Calendar & Batch Creation System</span></div>
-              <div class="feature-item"><span class="feature-icon">✓</span><span>Client Outreach Email Templates</span></div>
-              <div class="feature-item" style="color: var(--accent-danger); font-weight: 600;"><span class="feature-icon">🎁</span><span>BONUS: Free Entrepreneur Book Voucher</span></div>
-            </div>
-            <div class="pricing-amount">$129</div>
-            <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
-            <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't help you build momentum in both earning and business building, email us for a full refund—no forms, no hoops.</div>
-            <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','entrepreneur',129); decrementVoucher();" aria-label="Build my ADHD business with clear systems">🚀 Build My ADHD Business</a>
-          </div>
+          
+          <!-- Navigation arrows -->
+          <button class="pricing-gallery-nav prev" onclick="changeSlide(-1, 'pricing')" aria-label="Previous package">
+            ‹
+          </button>
+          <button class="pricing-gallery-nav next" onclick="changeSlide(1, 'pricing')" aria-label="Next package">
+            ›
+          </button>
         </div>
+
+        <!-- Gallery dots -->
+        <div class="pricing-gallery-dots" role="tablist" aria-label="Pricing packages navigation">
+          <span class="pricing-dot active" onclick="currentSlide(1, 'pricing')" role="tab" aria-label="Starter package" tabindex="0"></span>
+          <span class="pricing-dot" onclick="currentSlide(2, 'pricing')" role="tab" aria-label="Pro package" tabindex="0"></span>
+          <span class="pricing-dot" onclick="currentSlide(3, 'pricing')" role="tab" aria-label="Entrepreneur package" tabindex="0"></span>
+        </div>
+
         <div style="text-align:center; margin-top:40px;">
           <p style="color: var(--text-secondary); font-size: 1rem;">30‑day money‑back guarantee • Lifetime access to content • No decision anxiety, ever</p>
         </div>
@@ -1289,21 +1474,53 @@
       </div>
     </section>
 
-    <!-- FAQ (visual only; schema is JSON-LD above) -->
-        <section class="faq-section" aria-labelledby="faq-title">
+    <!-- FAQ (Interactive Accordion) -->
+    <section class="faq-section" aria-labelledby="faq-title">
       <div class="container">
-                     <article id="faq-section" class="faq-section"> 
-        <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
-               <div class="faq-grid">
-          <div class="faq-item"><div class="faq-question">How fast can I stop researching and start earning?</div><div class="faq-answer">Most people pick their first site and start within <strong>30 minutes of purchase</strong>. No more spending weeks comparing options. Some sites pay within <strong>48–72 hours</strong>, others take 1–2 weeks but offer higher rates.</div></div>
-          <div class="faq-item"><div class="faq-question">What if I'm completely new to earning online?</div><div class="faq-answer">Perfect! We cover <strong>requirements, difficulty level,</strong> and <strong>time to first payout</strong> for each site. Start with the "beginner‑friendly" tags and follow the step‑by‑step guides. No experience needed.</div></div>
-          <div class="faq-item"><div class="faq-question">Is this one of those "passive income" promises?</div><div class="faq-answer">No. These are <strong>active tasks</strong> with honest time expectations. We're anti‑hype and pro‑reality. While some apps work in the background after setup, we focus on legitimate work opportunities, not get‑rich‑quick schemes.</div></div>
-          <div class="faq-item"><div class="faq-question">Will this actually work with my ADHD brain?</div><div class="faq-answer">Yes—designed specifically for ADHD by someone with ADHD. Short task sessions, single‑focus layouts, and "Do‑This‑Next" checklists. No overwhelming dashboards or decision paralysis. Just clear momentum.</div></div>
-          <div class="faq-item"><div class="faq-question">How do I know this isn't a scam?</div><div class="faq-answer">Three facts: (1) I never touch your payment info — <strong>Stripe</strong> handles everything (Netflix, Uber, Amazon use the same processor). (2) You get <strong>instant access</strong>, no subscriptions, no recurring charges. (3) <strong>30‑day money‑back guarantee</strong> — if this doesn't help you stop overthinking and start earning, you get your money back. Zero risk.</div></div>
-          <div class="faq-item"><div class="faq-question">What does "lifetime access" mean?</div><div class="faq-answer">Lifetime access to the content and site directory. No subscription anxiety. If our hosting ever ends (unlikely), you'll get an <strong>instant downloadable offline version</strong> plus CSV export of all site data. You own it forever.</div></div>
-          <div class="faq-item"><div class="faq-question">How do you verify these sites are legit?</div><div class="faq-answer">Each site must pass our 7‑point verification: real payouts to us personally, clear terms, reliable payment processing, reasonable minimum cashout, active user base, responsive support, and legal compliance. We test everything first.</div></div>
-          <div class="faq-item"><div class="faq-question">Are there age restrictions?</div><div class="faq-answer">The 925 ADHD app itself has no age restrictions—it's a curated directory. Each site has its own rules: many require 18+, but lower‑paying sites (especially gift card ones) often allow younger teens. Always check each site's Terms or contact their support.</div></div>
-        </div>
+        <article id="faq-section" class="faq-section"> 
+          <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+          <div class="faq-grid">
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">How fast can I stop researching and start earning?</div>
+              <div class="faq-answer">Most people pick their first site and start within <strong>30 minutes of purchase</strong>. No more spending weeks comparing options. Some sites pay within <strong>48–72 hours</strong>, others take 1–2 weeks but offer higher rates.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">What if I'm completely new to earning online?</div>
+              <div class="faq-answer">Perfect! We cover <strong>requirements, difficulty level,</strong> and <strong>time to first payout</strong> for each site. Start with the "beginner‑friendly" tags and follow the step‑by‑step guides. No experience needed.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">Is this one of those "passive income" promises?</div>
+              <div class="faq-answer">No. These are <strong>active tasks</strong> with honest time expectations. We're anti‑hype and pro‑reality. While some apps work in the background after setup, we focus on legitimate work opportunities, not get‑rich‑quick schemes.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">Will this actually work with my ADHD brain?</div>
+              <div class="faq-answer">Yes—designed specifically for ADHD by someone with ADHD. Short task sessions, single‑focus layouts, and "Do‑This‑Next" checklists. No overwhelming dashboards or decision paralysis. Just clear momentum.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">How do I know this isn't a scam?</div>
+              <div class="faq-answer">Three facts: (1) I never touch your payment info — <strong>Stripe</strong> handles everything (Netflix, Uber, Amazon use the same processor). (2) You get <strong>instant access</strong>, no subscriptions, no recurring charges. (3) <strong>30‑day money‑back guarantee</strong> — if this doesn't help you stop overthinking and start earning, you get your money back. Zero risk.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">What does "lifetime access" mean?</div>
+              <div class="faq-answer">Lifetime access to the content and site directory. No subscription anxiety. If our hosting ever ends (unlikely), you'll get an <strong>instant downloadable offline version</strong> plus CSV export of all site data. You own it forever.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">How do you verify these sites are legit?</div>
+              <div class="faq-answer">Each site must pass our 7‑point verification: real payouts to us personally, clear terms, reliable payment processing, reasonable minimum cashout, active user base, responsive support, and legal compliance. We test everything first.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
+              <div class="faq-question">Are there age restrictions?</div>
+              <div class="faq-answer">The 925 ADHD app itself has no age restrictions—it's a curated directory. Each site has its own rules: many require 18+, but lower‑paying sites (especially gift card ones) often allow younger teens. Always check each site's Terms or contact their support.</div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -1317,7 +1534,7 @@
   </div>
 
   <!-- Footer -->
-  <footer style="background: var(--secondary-bg); padding: 40px 0 30px; border-top: 1px solid var(--border-subtle);">
+  <footer style="background: var(--secondary-bg); padding: 40px 0 80px; border-top: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="text-align: center;">
         <nav aria-label="Footer navigation" style="margin-bottom: 20px;">
@@ -1364,11 +1581,27 @@
       });
     })();
 
-    // Gallery functionality
-    let currentSlideIndex = 0;
-    const slides = document.querySelectorAll('.gallery-slide');
-    const dots = document.querySelectorAll('.dot');
-    const galleryContainer = document.getElementById('galleryContainer');
+    // Gallery functionality - Updated to handle multiple galleries
+    const galleries = {
+      hero: {
+        currentSlideIndex: 0,
+        slides: document.querySelectorAll('.gallery-slide'),
+        dots: document.querySelectorAll('.dot'),
+        container: document.getElementById('galleryContainer')
+      },
+      proof: {
+        currentSlideIndex: 0,
+        slides: document.querySelectorAll('.proof-gallery-slide'),
+        dots: document.querySelectorAll('.proof-dot'),
+        container: document.getElementById('proofGalleryContainer')
+      },
+      pricing: {
+        currentSlideIndex: 0,
+        slides: document.querySelectorAll('.pricing-gallery-slide'),
+        dots: document.querySelectorAll('.pricing-dot'),
+        container: document.getElementById('pricingGalleryContainer')
+      }
+    };
     
     // Touch/swipe functionality
     let startX = 0;
@@ -1377,134 +1610,194 @@
     let endY = 0;
     let isDragging = false;
     let isHorizontalSwipe = false;
+    let currentGallery = null;
 
-    function showSlide(n) {
-        if (n >= slides.length) currentSlideIndex = 0;
-        if (n < 0) currentSlideIndex = slides.length - 1;
-        
-        const translateX = -currentSlideIndex * 100;
-        galleryContainer.style.transform = `translateX(${translateX}%)`;
-        
-        // Update dots
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[currentSlideIndex].classList.add('active');
-        
-        // Track gallery interaction
-        gtag('event','gallery_slide_change',{event_category:'engagement',event_label:'slide_' + (currentSlideIndex + 1), value: currentSlideIndex + 1});
+    function showSlide(n, galleryType) {
+      const gallery = galleries[galleryType];
+      if (!gallery || !gallery.slides.length) return;
+      
+      if (n >= gallery.slides.length) gallery.currentSlideIndex = 0;
+      if (n < 0) gallery.currentSlideIndex = gallery.slides.length - 1;
+      
+      const translateX = -gallery.currentSlideIndex * 100;
+      gallery.container.style.transform = `translateX(${translateX}%)`;
+      
+      // Update dots
+      gallery.dots.forEach(dot => dot.classList.remove('active'));
+      if (gallery.dots[gallery.currentSlideIndex]) {
+        gallery.dots[gallery.currentSlideIndex].classList.add('active');
+      }
+      
+      // Track gallery interaction
+      gtag('event','gallery_slide_change',{event_category:'engagement',event_label: galleryType + '_slide_' + (gallery.currentSlideIndex + 1), value: gallery.currentSlideIndex + 1});
     }
 
-    function changeSlide(direction) {
-        currentSlideIndex += direction;
-        showSlide(currentSlideIndex);
+    function changeSlide(direction, galleryType) {
+      const gallery = galleries[galleryType];
+      if (!gallery) return;
+      gallery.currentSlideIndex += direction;
+      showSlide(gallery.currentSlideIndex, galleryType);
     }
 
-    function currentSlide(n) {
-        currentSlideIndex = n - 1;
-        showSlide(currentSlideIndex);
+    function currentSlide(n, galleryType) {
+      const gallery = galleries[galleryType];
+      if (!gallery) return;
+      gallery.currentSlideIndex = n - 1;
+      showSlide(gallery.currentSlideIndex, galleryType);
     }
 
-    // Touch/swipe event listeners
-    if (galleryContainer) {
-        galleryContainer.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDragging = true;
-            isHorizontalSwipe = false;
+    // Setup touch/swipe event listeners for all galleries
+    Object.keys(galleries).forEach(galleryType => {
+      const gallery = galleries[galleryType];
+      if (gallery.container) {
+        gallery.container.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isDragging = true;
+          isHorizontalSwipe = false;
+          currentGallery = galleryType;
         });
 
-        galleryContainer.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            
-            const currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            const diffX = Math.abs(currentX - startX);
-            const diffY = Math.abs(currentY - startY);
-            
-            // Determine swipe direction - only prevent default for horizontal swipes
-            if (diffX > diffY && diffX > 10) {
-                // Horizontal swipe detected - prevent default to handle gallery navigation
-                isHorizontalSwipe = true;
-                e.preventDefault();
-            } else if (diffY > diffX && diffY > 10) {
-                // Vertical swipe detected - allow normal page scrolling
-                isDragging = false;
-                isHorizontalSwipe = false;
-            }
-        });
-
-        galleryContainer.addEventListener('touchend', (e) => {
-            if (!isDragging || !isHorizontalSwipe) return;
-            endX = e.changedTouches[0].clientX;
-            endY = e.changedTouches[0].clientY;
-            handleSwipe();
+        gallery.container.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          
+          const currentX = e.touches[0].clientX;
+          const currentY = e.touches[0].clientY;
+          const diffX = Math.abs(currentX - startX);
+          const diffY = Math.abs(currentY - startY);
+          
+          // Determine swipe direction - only prevent default for horizontal swipes
+          if (diffX > diffY && diffX > 10) {
+            // Horizontal swipe detected - prevent default to handle gallery navigation
+            isHorizontalSwipe = true;
+            e.preventDefault();
+          } else if (diffY > diffX && diffY > 10) {
+            // Vertical swipe detected - allow normal page scrolling
             isDragging = false;
             isHorizontalSwipe = false;
+          }
+        });
+
+        gallery.container.addEventListener('touchend', (e) => {
+          if (!isDragging || !isHorizontalSwipe) return;
+          endX = e.changedTouches[0].clientX;
+          endY = e.changedTouches[0].clientY;
+          handleSwipe(galleryType);
+          isDragging = false;
+          isHorizontalSwipe = false;
+          currentGallery = null;
         });
 
         // Mouse drag for desktop
-        galleryContainer.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-            isDragging = true;
-            galleryContainer.style.cursor = 'grabbing';
+        gallery.container.addEventListener('mousedown', (e) => {
+          startX = e.clientX;
+          isDragging = true;
+          currentGallery = galleryType;
+          gallery.container.style.cursor = 'grabbing';
         });
 
-        galleryContainer.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
+        gallery.container.addEventListener('mousemove', (e) => {
+          if (!isDragging || currentGallery !== galleryType) return;
+          e.preventDefault();
         });
 
-        galleryContainer.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            endX = e.clientX;
-            handleSwipe();
+        gallery.container.addEventListener('mouseup', (e) => {
+          if (!isDragging || currentGallery !== galleryType) return;
+          endX = e.clientX;
+          handleSwipe(galleryType);
+          isDragging = false;
+          currentGallery = null;
+          gallery.container.style.cursor = 'grab';
+        });
+
+        gallery.container.addEventListener('mouseleave', () => {
+          if (isDragging && currentGallery === galleryType) {
             isDragging = false;
-            galleryContainer.style.cursor = 'grab';
+            currentGallery = null;
+            gallery.container.style.cursor = 'grab';
+          }
         });
 
-        galleryContainer.addEventListener('mouseleave', () => {
-            if (isDragging) {
-                isDragging = false;
-                galleryContainer.style.cursor = 'grab';
-            }
-        });
+        // Initialize gallery cursor
+        gallery.container.style.cursor = 'grab';
+      }
 
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swiped left - next slide
-                    changeSlide(1);
-                } else {
-                    // Swiped right - previous slide
-                    changeSlide(-1);
-                }
-            }
+      // Setup dot keyboard navigation
+      gallery.dots.forEach((dot, index) => {
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentSlide(index + 1, galleryType);
+          }
+        });
+      });
+    });
+
+    function handleSwipe(galleryType) {
+      const swipeThreshold = 50;
+      const diff = startX - endX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swiped left - next slide
+          changeSlide(1, galleryType);
+        } else {
+          // Swiped right - previous slide
+          changeSlide(-1, galleryType);
         }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                changeSlide(-1);
-            } else if (e.key === 'ArrowRight') {
-                changeSlide(1);
-            }
-        });
-
-        // Dot keyboard navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    currentSlide(index + 1);
-                }
-            });
-        });
-
-        // Initialize gallery
-        galleryContainer.style.cursor = 'grab';
+      }
     }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && currentGallery) {
+        changeSlide(-1, currentGallery);
+      } else if (e.key === 'ArrowRight' && currentGallery) {
+        changeSlide(1, currentGallery);
+      }
+    });
+
+    // Interactive FAQ functionality
+    function toggleFAQ(element) {
+      const isActive = element.classList.contains('active');
+      
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== element) {
+          item.classList.remove('active');
+          item.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      // Toggle the clicked item
+      if (isActive) {
+        element.classList.remove('active');
+        element.setAttribute('aria-expanded', 'false');
+      } else {
+        element.classList.add('active');
+        element.setAttribute('aria-expanded', 'true');
+        
+        // Track FAQ expansion
+        const questionText = element.querySelector('.faq-question').textContent.replace(/▼/g, '').trim();
+        gtag('event', 'faq_expand', {
+          event_category: 'engagement',
+          event_label: questionText.substring(0, 50) + (questionText.length > 50 ? '...' : ''),
+          value: 1
+        });
+      }
+    }
+
+    // Add keyboard support for FAQ items
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleFAQ(this);
+          }
+        });
+      });
+    });
 
     // Back to top
     function scrollToTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); gtag('event','back_to_top',{event_category:'navigation',event_label:'back_to_top_button'}); }
