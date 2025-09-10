@@ -809,24 +809,20 @@
     .feature-item:last-child { margin-bottom: 0; }
     .feature-icon { color: var(--accent-success); margin-right: 8px; margin-top: 2px; flex-shrink: 0; }
     
-    .pricing-amount { 
-      font-size: 3rem; 
-      font-weight: 900; 
-      margin: 15px 0 8px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    
-    .popular .pricing-amount { color: var(--accent-success); }
-    .best-value .pricing-amount { color: var(--accent-primary); }
-    .entrepreneur .pricing-amount { color: var(--accent-warning); }
-    
     .pricing-note { 
       color: var(--text-muted); 
       font-size: .9rem; 
       margin-bottom: 15px;
       word-wrap: break-word;
       overflow-wrap: break-word;
+    }
+    
+    .value-summary {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: .95rem;
+      margin-bottom: 20px;
+      line-height: 1.4;
     }
     
     .pricing-cta { 
@@ -1008,6 +1004,43 @@
       max-width: 100%;
     }
 
+    /* Place header + arrows on one line (wrap on mobile) */
+    .offer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    /* Header arrow container */
+    .offer-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Header arrow buttons */
+    .offer-nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--card-bg);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      font-size: 18px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .offer-nav-btn:hover { background: var(--glass-bg); transform: translateY(-1px); }
+
+    /* Hide the old over-card arrows (keep JS intact) */
+    .pricing-gallery-nav { display: none !important; }
+
     @media (max-width: 768px) {
       .container { padding: 0 15px; }
       .logo-container img { height: 36px; }
@@ -1054,7 +1087,6 @@
       }
       
       .pricing-image { height: 280px; }
-      .pricing-amount { font-size: 2.5rem; }
       .pricing-cta { padding: 16px 25px; font-size: 1rem; }
       
       /* MOBILE FIX: Adjust bonus book positioning for mobile */
@@ -1077,6 +1109,9 @@
       .faq-item.active .faq-answer {
         padding: 0 20px 20px;
       }
+
+      /* Mobile: stack title and arrows */
+      .offer-header { flex-direction: column; align-items: center; gap: 12px; }
     }
     
     @media (max-width: 480px) {
@@ -1093,7 +1128,6 @@
       }
       
       .pricing-image { height: 220px; }
-      .pricing-amount { font-size: 2rem; }
       .pricing-cta { padding: 14px 20px; font-size: .95rem; }
       
       /* MOBILE FIX: Further adjust for very small screens */
@@ -1150,11 +1184,6 @@
         line-height: 1.3;
       }
       
-      .pricing-amount { 
-        font-size: 1.8rem; 
-        margin: 12px 0 8px;
-      }
-      
       .pricing-note {
         font-size: 0.8rem;
         margin-bottom: 12px;
@@ -1174,13 +1203,20 @@
         margin: 12px 0;
       }
       
+      /* MOBILE FIX: Ultra-small screens - keep book small but visible, never overlapping */
       .bonus-offer {
-        padding: 10px;
+        padding: 10px 50px 10px 12px; /* Minimal right padding for tiny screens */
         margin-bottom: 12px;
         font-size: 0.82rem;
       }
       
-      .bonus-book-image { display: none !important; }
+      .bonus-book-image { 
+        right: 3px !important; 
+        height: 35px !important; 
+        transform: translateY(-50%) rotate(8deg) !important;
+        max-width: 40px !important;
+        /* Keep it visible but very small - only hide if truly necessary */
+      }
 
       /* Very small screen FAQ */
       .faq-question { 
@@ -1446,23 +1482,30 @@
         
         <article id="pricing" class="offer-section">
         <!-- Swipeable Pricing Gallery -->
-       <header>
+        <header class="offer-header">
           <h2 class="section-title">Skip the Overwhelm — Choose Your Clear Path</h2>
-        </header> 
+
+          <!-- New header arrows -->
+          <div class="offer-nav" aria-label="Browse packages">
+            <button class="offer-nav-btn prev" onclick="changeSlide(-1, 'pricing')" aria-label="Previous package">‹</button>
+            <button class="offer-nav-btn next" onclick="changeSlide(1, 'pricing')" aria-label="Next package">›</button>
+          </div>
+        </header>
+
 		<div class="pricing-gallery" role="region" aria-label="Pricing packages gallery">
           <div class="pricing-gallery-container" id="pricingGalleryContainer">
             <div class="pricing-gallery-slide">
               <div id="Basic-package" class="pricing-card popular">
                 <div class="pricing-badge">MOST POPULAR</div>
                 <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Basic App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-                <h3 class="pricing-title" style="color: var(--accent-success);">Basic App</h3>
+                <h3 class="pricing-title" style="color: var(--accent-success);">Basic App - $9.25</h3>
+                <div class="value-summary">ADHD-friendly app with 50+ pre-researched sites</div>
                 <div class="feature-list">
                   <div class="feature-item"><span class="feature-icon">✓</span><span>ADHD‑Friendly Web App with 50+ Pre‑Researched Sites 💸</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community — a space just for members who get it</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
                 </div>
-                <div class="pricing-amount">$9.25</div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't cut through your decision paralysis and help you start earning, email us for a full refund—no forms, no hoops.</div>
                 <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
@@ -1472,14 +1515,14 @@
               <div id="pro-package" class="pricing-card best-value">
                 <div class="pricing-badge">BEST VALUE</div>
                 <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/popreview-5b6b090.png" alt="Pro Toolkit package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-                <h3 class="pricing-title" style="color: var(--accent-primary);">Pro Toolkit</h3>
+                <h3 class="pricing-title" style="color: var(--accent-primary);">Pro Toolkit - $29</h3>
+                <div class="value-summary">Everything in Basic App + advanced ADHD tools</div>
                 <div class="feature-list">
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Everything in Basic App</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Unlock ADHD Tools & Focus Productivity Section</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Site Match Quiz (No More Guessing Which Site to Try)</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Priority Discord Support and Enhanced Role Styles</span></div>
                 </div>
-                <div class="pricing-amount">$29</div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't eliminate your decision fatigue and help you earn, email us for a full refund—no forms, no hoops.</div>
                 <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','pro',29)" aria-label="Get the decision-free pro toolkit">🎯 Get Maximum Clarity</a>
@@ -1489,7 +1532,8 @@
               <div id="entrepreneur-package" class="pricing-card entrepreneur">
                 <div class="pricing-badge">ENTREPRENEUR</div>
                 <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/premiun-0891a5d.png" alt="Entrepreneur Accelerator package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-                <h3 class="pricing-title" style="color: var(--accent-warning);">ADHD Entrepreneur Accelerator</h3>
+                <h3 class="pricing-title" style="color: var(--accent-warning);">ADHD Entrepreneur Accelerator - $129</h3>
+                <div class="value-summary">Everything in Pro Toolkit + personal brand building system</div>
                 <p style="color: var(--text-secondary); font-size: .95rem; margin-bottom: 20px; line-height: 1.4;">Ready to go beyond earning sites? Build your personal brand while earning from sites, then transition to becoming your own boss — no analysis paralysis, just clear systems.</p>
                 <div class="bonus-offer">
                   <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/100M%20Money%20Models.webp/:/rs=h:175,m" alt="Bonus entrepreneur book" class="bonus-book-image" loading="lazy" decoding="async" width="120" height="175">
@@ -1505,21 +1549,12 @@
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Client Outreach Email Templates</span></div>
                   <div class="feature-item" style="color: var(--accent-danger); font-weight: 600;"><span class="feature-icon">🎁</span><span>BONUS: Free Entrepreneur Book Voucher</span></div>
                 </div>
-                <div class="pricing-amount">$129</div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't help you build momentum in both earning and business building, email us for a full refund—no forms, no hoops.</div>
                 <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','entrepreneur',129); decrementVoucher();" aria-label="Build my ADHD business with clear systems">🚀 Build My ADHD Business</a>
               </div>
             </div>
           </div>
-          
-          <!-- Navigation arrows -->
-          <button class="pricing-gallery-nav prev" onclick="changeSlide(-1, 'pricing')" aria-label="Previous package">
-            ‹
-          </button>
-          <button class="pricing-gallery-nav next" onclick="changeSlide(1, 'pricing')" aria-label="Next package">
-            ›
-          </button>
         </div>
 
         <!-- Gallery dots -->
