@@ -426,6 +426,11 @@
       right: 10px;
     }
 
+    /* UPDATED: Move pricing gallery arrows up */
+    .pricing-gallery-nav {
+      top: 35%;
+    }
+
     /* Touch indicators for mobile */
     @media (hover: none) {
       .gallery-nav, .proof-gallery-nav, .pricing-gallery-nav {
@@ -446,7 +451,7 @@
       }
       
       .gallery-slide {
-        min-width: calc(50% - 10px);
+        min-width: calc(33.333% - 14px);
         flex: 1;
       }
       
@@ -1020,6 +1025,12 @@
       .image-gallery, .proof-gallery, .pricing-gallery {
         max-width: 90%;
       }
+      
+      /* Mobile gallery reorder - Package Preview first */
+      #package-slide { order: 1; }
+      #properties-slide { order: 2; }
+      #review-slide { order: 3; }
+      
       .plan-steps { grid-template-columns: 1fr; }
       .relief-headline { font-size: 2rem; }
       .section-title { font-size: 2rem; }
@@ -1028,11 +1039,16 @@
       .stats-grid { grid-template-columns: 1fr; gap: 15px; }
       .stat-number { font-size: 1.7rem; }
       .testimonial-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      /* UPDATED: Make pricing cards wider and less narrow on mobile */
       .pricing-card {
         margin: 0;
         width: 100%;
-        padding: 25px;
+        padding: 30px 25px;
+        max-width: none;
+        min-width: 280px;
       }
+      
       .pricing-image { height: 280px; }
       .pricing-amount { font-size: 2.5rem; }
       .pricing-cta { padding: 16px 25px; font-size: 1rem; }
@@ -1065,7 +1081,13 @@
       .relief-headline { font-size: 1.7rem; }
       .section-title { font-size: 1.7rem; }
       .free-preview-title { font-size: 1.6rem; }
-      .pricing-card { padding: 20px; }
+      
+      /* UPDATED: Even wider pricing cards on smaller screens */
+      .pricing-card { 
+        padding: 25px 20px;
+        min-width: 260px;
+      }
+      
       .pricing-image { height: 220px; }
       .pricing-amount { font-size: 2rem; }
       .pricing-cta { padding: 14px 20px; font-size: .95rem; }
@@ -1094,9 +1116,67 @@
     
     @media (max-width: 360px) { 
       .container { padding: 0 10px; }
-      .bonus-book-image { display: none !important; }
-      .pricing-card { padding: 15px; }
       .hero-cta-primary { padding: 10px 20px; }
+      
+      /* UPDATED: Ultra-compact mobile pricing - still wider than before */
+      .pricing-card { 
+        padding: 20px 15px; 
+        border-radius: 12px;
+        min-width: 240px;
+      }
+      
+      .pricing-image { 
+        height: 140px; 
+        margin-bottom: 12px;
+      }
+      
+      .pricing-title {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+      
+      .feature-list {
+        padding: 15px 12px;
+        margin-bottom: 10px;
+      }
+      
+      .feature-item {
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        line-height: 1.3;
+      }
+      
+      .pricing-amount { 
+        font-size: 1.8rem; 
+        margin: 12px 0 8px;
+      }
+      
+      .pricing-note {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+      }
+      
+      .pricing-cta { 
+        padding: 12px 18px; 
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        border-radius: 8px;
+      }
+      
+      .guarantee-box {
+        padding: 12px;
+        font-size: 0.82rem;
+        line-height: 1.3;
+        margin: 12px 0;
+      }
+      
+      .bonus-offer {
+        padding: 10px;
+        margin-bottom: 12px;
+        font-size: 0.82rem;
+      }
+      
+      .bonus-book-image { display: none !important; }
 
       /* Very small screen FAQ */
       .faq-question { 
@@ -1148,8 +1228,8 @@
       <div class="image-gallery" role="region" aria-label="App preview gallery">
         <div class="gallery-container" id="galleryContainer">
           <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
-                 alt="925 ADHD App Package Preview" 
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" 
+                 alt="925 ADHD App Properties Preview" 
                  loading="eager" 
                  fetchpriority="high" 
                  decoding="async"
@@ -1157,8 +1237,16 @@
                  height="360">
           </div>
           <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" 
-                 alt="925 ADHD App Properties Preview" 
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
+                 alt="925 ADHD App Package Preview" 
+                 loading="lazy" 
+                 decoding="async"
+                 width="640" 
+                 height="360">
+          </div>
+          <div class="gallery-slide">
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/review.png" 
+                 alt="925 ADHD App Review Preview" 
                  loading="lazy" 
                  decoding="async"
                  width="640" 
@@ -1179,6 +1267,7 @@
       <div class="gallery-dots" role="tablist" aria-label="Image gallery navigation">
         <span class="dot active" onclick="currentSlide(1, 'hero')" role="tab" aria-label="Image 1" tabindex="0"></span>
         <span class="dot" onclick="currentSlide(2, 'hero')" role="tab" aria-label="Image 2" tabindex="0"></span>
+        <span class="dot" onclick="currentSlide(3, 'hero')" role="tab" aria-label="Image 3" tabindex="0"></span>
       </div>
       
       <div class="container">
@@ -1369,7 +1458,7 @@
                 <div class="pricing-amount">$9.25</div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't cut through your decision paralysis and help you start earning, email us for a full refund—no forms, no hoops.</div>
-                <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','Basic',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
+                <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
               </div>
             </div>
             <div class="pricing-gallery-slide">
@@ -1601,6 +1690,24 @@
         container: document.getElementById('pricingGalleryContainer')
       }
     };
+
+    // Initialize mobile gallery
+    window.addEventListener('load', function() {
+      if (window.innerWidth <= 768) {
+        // Mobile: start with Package Preview (index 1)
+        setTimeout(function() {
+          galleries.hero.currentSlideIndex = 1;
+          const translateX = -100; // -100% for second slide
+          galleries.hero.container.style.transform = `translateX(${translateX}%)`;
+          
+          // Update dots
+          galleries.hero.dots.forEach(dot => dot.classList.remove('active'));
+          if (galleries.hero.dots[1]) {
+            galleries.hero.dots[1].classList.add('active');
+          }
+        }, 100);
+      }
+    });
     
     // Touch/swipe functionality
     let startX = 0;
