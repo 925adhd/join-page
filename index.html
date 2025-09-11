@@ -454,29 +454,28 @@
       }
     }
 
-    /* Desktop layout - show multiple images side by side */
+    /* Desktop layout - CAROUSEL ON ALL DEVICES */
     @media (min-width: 769px) {
       .image-gallery {
-        max-width: 800px;
+        max-width: 500px; /* Larger single image display on desktop */
       }
       
       .gallery-container {
-        transform: none !important;
-        cursor: default;
-        gap: 20px;
+        /* Keep carousel functionality - don't override transform */
+        cursor: grab;
       }
       
       .gallery-slide {
-        min-width: calc(33.333% - 14px);
-        flex: 1;
+        min-width: 100%; /* Single image at a time */
+        flex-shrink: 0;
       }
       
       .gallery-nav {
-        display: none;
+        display: flex; /* Show navigation arrows on desktop */
       }
       
       .gallery-dots {
-        display: none;
+        display: flex; /* Show dots on desktop */
       }
 
       /* Proof gallery desktop layout - both images visible */
@@ -1222,6 +1221,7 @@
           <a href="https://925adhd.com" aria-label="925 ADHD Home">
             <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" width="175" height="175" loading="eager" fetchpriority="high" decoding="async">
           </a>
+          <a href="https://925adhd.com" class="home-link">Home</a>
         </div>
       </nav>
     </div>
