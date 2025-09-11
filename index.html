@@ -426,15 +426,31 @@
       right: 10px;
     }
 
-    /* UPDATED: Move pricing gallery arrows up */
+    /* UPDATED: Position pricing gallery arrows higher and more visible */
     .pricing-gallery-nav {
-      top: 35%;
+      top: 25%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      background: var(--card-bg);
+      border: 2px solid var(--border-bright);
+      color: var(--text-primary);
+      opacity: 0.9;
+    }
+
+    .pricing-gallery-nav:hover {
+      background: var(--glass-bg);
+      border-color: var(--accent-secondary);
+      opacity: 1;
     }
 
     /* Touch indicators for mobile */
     @media (hover: none) {
-      .gallery-nav, .proof-gallery-nav, .pricing-gallery-nav {
+      .gallery-nav, .proof-gallery-nav {
         opacity: 0.4;
+      }
+      .pricing-gallery-nav {
+        opacity: 0.7;
       }
     }
 
@@ -834,7 +850,7 @@
       font-size: 1.1rem; 
       display: inline-block; 
       transition: .3s; 
-      margin-bottom: 12px; 
+      margin-bottom: 20px; 
       width: 100%; 
       box-sizing: border-box;
       text-align: center;
@@ -1004,42 +1020,7 @@
       max-width: 100%;
     }
 
-    /* Place header + arrows on one line (wrap on mobile) */
-    .offer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-
-    /* Header arrow container */
-    .offer-nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    /* Header arrow buttons */
-    .offer-nav-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: var(--card-bg);
-      color: #fff;
-      cursor: pointer;
-      box-shadow: var(--shadow-soft);
-      font-size: 18px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s ease, transform .2s ease;
-    }
-    .offer-nav-btn:hover { background: var(--glass-bg); transform: translateY(-1px); }
-
-    /* Hide the old over-card arrows (keep JS intact) */
-    .pricing-gallery-nav { display: none !important; }
+    /* REMOVED: Old header arrows - these have been removed */
 
     @media (max-width: 768px) {
       .container { padding: 0 15px; }
@@ -1109,9 +1090,6 @@
       .faq-item.active .faq-answer {
         padding: 0 20px 20px;
       }
-
-      /* Mobile: stack title and arrows */
-      .offer-header { flex-direction: column; align-items: center; gap: 12px; }
     }
     
     @media (max-width: 480px) {
@@ -1267,6 +1245,23 @@
       <!-- Swipeable Image Gallery -->
       <div class="image-gallery" role="region" aria-label="App preview gallery">
         <div class="gallery-container" id="galleryContainer">
+        <div class="gallery-slide">
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/side%20panel.png" 
+                 alt="925 ADHD App Side Panel Interface" 
+                 loading="lazy" 
+                 decoding="async"
+                 width="640" 
+                 height="360">
+          </div>
+        
+          <div class="gallery-slide">
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
+                 alt="925 ADHD App Package Preview" 
+                 loading="lazy" 
+                 decoding="async"
+                 width="640" 
+                 height="360">
+          </div>
           <div class="gallery-slide">
             <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" 
                  alt="925 ADHD App Properties Preview" 
@@ -1276,9 +1271,9 @@
                  width="640" 
                  height="360">
           </div>
-          <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
-                 alt="925 ADHD App Package Preview" 
+           <div class="gallery-slide">
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/cash.png" 
+                 alt="925 ADHD App Earnings Dashboard" 
                  loading="lazy" 
                  decoding="async"
                  width="640" 
@@ -1292,6 +1287,9 @@
                  width="640" 
                  height="360">
           </div>
+            
+          
+         
         </div>
         
         <!-- Navigation arrows -->
@@ -1308,6 +1306,8 @@
         <span class="dot active" onclick="currentSlide(1, 'hero')" role="tab" aria-label="Image 1" tabindex="0"></span>
         <span class="dot" onclick="currentSlide(2, 'hero')" role="tab" aria-label="Image 2" tabindex="0"></span>
         <span class="dot" onclick="currentSlide(3, 'hero')" role="tab" aria-label="Image 3" tabindex="0"></span>
+        <span class="dot" onclick="currentSlide(4, 'hero')" role="tab" aria-label="Image 4" tabindex="0"></span>
+        <span class="dot" onclick="currentSlide(5, 'hero')" role="tab" aria-label="Image 5" tabindex="0"></span>
       </div>
       
       <div class="container">
@@ -1482,14 +1482,8 @@
         
         <article id="pricing" class="offer-section">
         <!-- Swipeable Pricing Gallery -->
-        <header class="offer-header">
+        <header>
           <h2 class="section-title">Skip the Overwhelm — Choose Your Clear Path</h2>
-
-          <!-- New header arrows -->
-          <div class="offer-nav" aria-label="Browse packages">
-            <button class="offer-nav-btn prev" onclick="changeSlide(-1, 'pricing')" aria-label="Previous package">‹</button>
-            <button class="offer-nav-btn next" onclick="changeSlide(1, 'pricing')" aria-label="Next package">›</button>
-          </div>
         </header>
 
 		<div class="pricing-gallery" role="region" aria-label="Pricing packages gallery">
@@ -1500,6 +1494,10 @@
                 <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Basic App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
                 <h3 class="pricing-title" style="color: var(--accent-success);">Basic App - $9.25</h3>
                 <div class="value-summary">ADHD-friendly app with 50+ pre-researched sites</div>
+                
+                <!-- MOVED: CTA button now appears here, right after title and description -->
+                <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
+                
                 <div class="feature-list">
                   <div class="feature-item"><span class="feature-icon">✓</span><span>ADHD‑Friendly Web App with 50+ Pre‑Researched Sites 💸</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
@@ -1508,7 +1506,6 @@
                 </div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't cut through your decision paralysis and help you start earning, email us for a full refund—no forms, no hoops.</div>
-                <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Stop overthinking and start earning">🎯 Stop Overthinking — Start Earning</a>
               </div>
             </div>
             <div class="pricing-gallery-slide">
@@ -1517,6 +1514,10 @@
                 <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/popreview-5b6b090.png" alt="Pro Toolkit package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
                 <h3 class="pricing-title" style="color: var(--accent-primary);">Pro Toolkit - $29</h3>
                 <div class="value-summary">Everything in Basic App + advanced ADHD tools</div>
+                
+                <!-- MOVED: CTA button now appears here, right after title and description -->
+                <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','pro',29)" aria-label="Get the decision-free pro toolkit">🎯 Get Maximum Clarity</a>
+                
                 <div class="feature-list">
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Everything in Basic App</span></div>
                   <div class="feature-item"><span class="feature-icon">✓</span><span>Unlock ADHD Tools & Focus Productivity Section</span></div>
@@ -1525,7 +1526,6 @@
                 </div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't eliminate your decision fatigue and help you earn, email us for a full refund—no forms, no hoops.</div>
-                <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','pro',29)" aria-label="Get the decision-free pro toolkit">🎯 Get Maximum Clarity</a>
               </div>
             </div>
             <div class="pricing-gallery-slide">
@@ -1535,6 +1535,10 @@
                 <h3 class="pricing-title" style="color: var(--accent-warning);">ADHD Entrepreneur Accelerator - $129</h3>
                 <div class="value-summary">Everything in Pro Toolkit + personal brand building system</div>
                 <p style="color: var(--text-secondary); font-size: .95rem; margin-bottom: 20px; line-height: 1.4;">Ready to go beyond earning sites? Build your personal brand while earning from sites, then transition to becoming your own boss — no analysis paralysis, just clear systems.</p>
+                
+                <!-- MOVED: CTA button now appears here, right after title and description -->
+                <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','entrepreneur',129); decrementVoucher();" aria-label="Build my ADHD business with clear systems">🚀 Build My ADHD Business</a>
+                
                 <div class="bonus-offer">
                   <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/100M%20Money%20Models.webp/:/rs=h:175,m" alt="Bonus entrepreneur book" class="bonus-book-image" loading="lazy" decoding="async" width="120" height="175">
                   <div style="color: var(--accent-danger); font-weight: 700; font-size: .9rem; margin-bottom: 8px;">🎁 Bonus Book Vouchers: <span id="voucher-count">14</span> Available</div>
@@ -1551,10 +1555,17 @@
                 </div>
                 <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
                 <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't help you build momentum in both earning and business building, email us for a full refund—no forms, no hoops.</div>
-                <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','entrepreneur',129); decrementVoucher();" aria-label="Build my ADHD business with clear systems">🚀 Build My ADHD Business</a>
               </div>
             </div>
           </div>
+          
+          <!-- Navigation arrows for pricing gallery -->
+          <button class="pricing-gallery-nav prev" onclick="changeSlide(-1, 'pricing')" aria-label="Previous package">
+            ‹
+          </button>
+          <button class="pricing-gallery-nav next" onclick="changeSlide(1, 'pricing')" aria-label="Next package">
+            ›
+          </button>
         </div>
 
         <!-- Gallery dots -->
