@@ -1759,23 +1759,23 @@
       }
     };
 
-    // Initialize mobile gallery
+    // Initialize gallery to start on second image (Package Preview) for all devices
     window.addEventListener('load', function() {
-      if (window.innerWidth <= 768) {
-        // Mobile: start hero with Package Preview (index 1)
-        setTimeout(function() {
-          galleries.hero.currentSlideIndex = 1;
-          const translateX = -100; // -100% for second slide
-          galleries.hero.container.style.transform = `translateX(${translateX}%)`;
-          
-          // Update dots
-          galleries.hero.dots.forEach(dot => dot.classList.remove('active'));
-          if (galleries.hero.dots[1]) {
-            galleries.hero.dots[1].classList.add('active');
-          }
-        }, 100);
+      // Start hero with Package Preview (index 1) on all devices
+      setTimeout(function() {
+        galleries.hero.currentSlideIndex = 1;
+        const translateX = -100; // -100% for second slide
+        galleries.hero.container.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        galleries.hero.dots.forEach(dot => dot.classList.remove('active'));
+        if (galleries.hero.dots[1]) {
+          galleries.hero.dots[1].classList.add('active');
+        }
+      }, 100);
 
-        // Mobile: start pricing with Pro Toolkit (index 1 - BEST VALUE)
+      // Mobile-only: start pricing with Pro Toolkit (index 1 - BEST VALUE)
+      if (window.innerWidth <= 768) {
         setTimeout(function() {
           galleries.pricing.currentSlideIndex = 1;
           const translateXPricing = -100; // -100% for second slide
