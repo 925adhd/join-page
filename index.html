@@ -357,7 +357,16 @@
       display: block;
       max-width: 100%;
     }
+ /* Keep link color consistent even after clicking */
+  .no-visited-style:link,
+  .no-visited-style:visited {
+    color: inherit; /* Inherit the parent text color */
+    text-decoration: underline; /* Keep underline (optional) */
+  }
 
+  .no-visited-style:hover {
+    color: #0073e6; /* Optional: add hover color */
+  }
     /* Navigation dots */
     .gallery-dots, .proof-gallery-dots, .pricing-gallery-dots {
       display: flex;
@@ -1387,9 +1396,18 @@
     <div class="plan-step-desc">Work with your ADHD, not against it.</div>
   </li>
   <li class="plan-step">
-    <div class="plan-step-number">🧠 ADHD Tools Keep You On Track</div>
+    <div class="plan-step-number">🧠 ADHD Tools Keep You On Track*</div>
     <div class="plan-step-title">Earnings tracker → focus optimizer → get paid faster</div>
-    <div class="plan-step-desc">Advanced tools available with Pro.</div>
+<div class="plan-step-desc">
+  *Available with 
+  <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="no-visited-style">
+    Pro Toolkit
+  </a>.
+</div>
+
   </li>
 </ul>
 
