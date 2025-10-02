@@ -127,7 +127,7 @@
   }
   </script>
 
-  <!-- FAQPage - UPDATED -->
+  <!-- FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -177,8 +177,8 @@
   }
   </script>
 
-<!-- Styles -->
-  <style>
+  <!-- Styles -->
+   <style>
     :root {
       --primary-bg: #0f1419;
       --secondary-bg: #1a1f2e;
@@ -263,7 +263,7 @@
       width: 100%;
     }
     
-    .logo-container a { display: flex; align-items: center; text-decoration: none; }
+     .logo-container a { display: flex; align-items: center; text-decoration: none; }
     .logo-container img { height: 40px; width: auto; max-width: 100%; }
     .back-to-top { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background: var(--gradient-primary); color: #fff; border: 0; border-radius: 50%; cursor: pointer; font-size: 1.2rem; font-weight: 700; box-shadow: var(--shadow-medium); transition: .3s; z-index: 999; opacity: 0; visibility: hidden; transform: translateY(20px); }
     .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -282,7 +282,7 @@
       font-size: 3.2rem; 
       font-weight: 900; 
       line-height: 1.1; 
-      margin: 20px 0 16px; 
+      margin: 0px 0 16px; 
       background: var(--gradient-adhd); 
       background-size: 200% 200%; 
       -webkit-background-clip: text; 
@@ -299,6 +299,51 @@
       margin: 0 auto 30px;
       word-wrap: break-word;
       overflow-wrap: break-word;
+    }
+    
+    /* UPDATED: Value proposition with bullet points */
+    .value-prop-box {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 25px;
+      max-width: 700px;
+      margin: 30px 20px;
+      text-align: left;
+    }
+    
+    .value-prop-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-success);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .value-prop-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .value-prop-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    
+    .value-prop-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .value-prop-icon {
+      color: var(--accent-success);
+      margin-right: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      font-size: 1.2rem;
     }
     
     /* UPDATED HERO CTA STYLES */
@@ -326,8 +371,13 @@
       text-align: center;
       box-sizing: border-box;
     }
-    .hero-cta-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-strong); }
     
+    .hero-cta-primary:hover { 
+      transform: translateY(-2px); 
+      box-shadow: var(--shadow-strong); 
+    }
+    
+   
     .social-proof { 
       margin: 0.5rem 0;
       text-align: center;
@@ -355,9 +405,10 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+    
     .hero-cta-secondary:hover { color: var(--accent-primary); }
 
-    /* Image Gallery Styles - Used for all galleries */
+    /* Image Gallery Styles */
     .image-gallery, .proof-gallery {
       position: relative;
       max-width: 400px;
@@ -389,17 +440,17 @@
       display: block;
       max-width: 100%;
     }
- /* Keep link color consistent even after clicking */
-  .no-visited-style:link,
-  .no-visited-style:visited {
-    color: inherit; /* Inherit the parent text color */
-    text-decoration: underline; /* Keep underline (optional) */
-  }
 
-  .no-visited-style:hover {
-    color: #0073e6; /* Optional: add hover color */
-  }
-    /* Navigation dots */
+    .no-visited-style:link,
+    .no-visited-style:visited {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    .no-visited-style:hover {
+      color: #0073e6;
+    }
+
     .gallery-dots, .proof-gallery-dots {
       display: flex;
       justify-content: center;
@@ -428,7 +479,6 @@
       opacity: 0.8;
     }
 
-    /* Navigation arrows */
     .gallery-nav, .proof-gallery-nav {
       position: absolute;
       top: 50%;
@@ -467,38 +517,34 @@
       right: 15px;
     }
 
-    /* Touch indicators for mobile */
     @media (hover: none) {
       .gallery-nav, .proof-gallery-nav {
         opacity: 0.4;
       }
     }
 
-    /* Desktop layout - CAROUSEL ON ALL DEVICES */
     @media (min-width: 769px) {
       .image-gallery {
-        max-width: 500px; /* Larger single image display on desktop */
+        max-width: 500px;
       }
       
       .gallery-container {
-        /* Keep carousel functionality - don't override transform */
         cursor: grab;
       }
       
       .gallery-slide {
-        min-width: 100%; /* Single image at a time */
+        min-width: 100%;
         flex-shrink: 0;
       }
       
       .gallery-nav {
-        display: flex; /* Show navigation arrows on desktop */
+        display: flex;
       }
       
       .gallery-dots {
-        display: flex; /* Show dots on desktop */
+        display: flex;
       }
 
-      /* Proof gallery desktop layout - both images visible */
       .proof-gallery {
         max-width: 800px;
       }
@@ -523,6 +569,7 @@
       }
     }
     
+    /* UPDATED: Three steps with visual boxes */
     .plan-steps { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); 
@@ -535,17 +582,48 @@
     
     .plan-step { 
       background: var(--card-bg); 
-      border: 1px solid var(--border-subtle); 
+      border: 2px solid var(--border-subtle); 
       border-radius: 12px; 
       padding: 25px 20px; 
       text-align: center;
       width: 100%;
       box-sizing: border-box;
+      transition: all 0.3s ease;
     }
     
-    .plan-step-number { font-size: 1.2rem; font-weight: 800; color: var(--accent-success); margin-bottom: 8px; }
-    .plan-step-title { font-weight: 700; margin-bottom: 5px; }
-    .plan-step-desc { font-size: .9rem; color: var(--text-secondary); }
+    .plan-step:hover {
+      border-color: var(--accent-success);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .plan-step-number { 
+      font-size: 2rem; 
+      font-weight: 900; 
+      color: var(--accent-success); 
+      margin-bottom: 12px;
+      background: var(--glass-bg);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .plan-step-title { 
+      font-weight: 700; 
+      margin-bottom: 8px; 
+      font-size: 1.1rem;
+    }
+    
+    .plan-step-desc { 
+      font-size: .9rem; 
+      color: var(--text-secondary); 
+      line-height: 1.5;
+    }
     
     .relief-section { 
       padding: 10px 0; 
@@ -631,8 +709,7 @@
     
     .testimonial-text { 
       font-style: italic; 
-      color: var(--text-secondary); 
-      padding-left: 20px; 
+      color: var(--text-secondary);padding-left: 20px; 
       margin-bottom: 15px;
       word-wrap: break-word;
       overflow-wrap: break-word;
@@ -647,7 +724,7 @@
       overflow-wrap: break-word;
     }
 
-    /* Free Preview Section Styles - BACKGROUND REMOVED */
+    /* Free Preview Section Styles */
     .free-preview-section {
       padding: 60px 0;
       width: 100%;
@@ -682,6 +759,7 @@
       overflow-wrap: break-word;
     }
 
+    /* UPDATED: Changed CTA text */
     .free-preview-cta {
       background: var(--gradient-primary);
       color: #fff;
@@ -701,6 +779,29 @@
     .free-preview-cta:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-strong);
+    }
+
+    /* NEW: No CC required text */
+    .no-cc-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* NEW: Trust badge */
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--accent-success);
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin: 15px auto;
+      font-size: 0.9rem;
+      color: var(--accent-success);
+      font-weight: 600;
     }
 
     .free-preview-features {
@@ -736,7 +837,7 @@
     
     .offer-section { 
       padding: 80px 0; 
-      background: transparent;;
+      background: transparent;
       width: 100%;
       overflow: hidden;
     }
@@ -750,9 +851,9 @@
       position: relative; 
       overflow: hidden;
       max-width: 500px;
-      margin: 0 auto;
+      margin: 0 20px;
       box-sizing: border-box;
-      width: 100%;
+      width: calc(100% - 40px)
       display: flex;
       flex-direction: column;
     }
@@ -831,6 +932,7 @@
       line-height: 1.4;
     }
     
+    /* UPDATED: Changed CTA text */
     .pricing-cta { 
       color: #fff; 
       padding: 16px 30px; 
@@ -889,6 +991,7 @@
       line-height: 1.4;
     }
     
+    /* UPDATED: Changed upgrade link text */
     .upgrade-link {
       display: inline-block;
       color: var(--accent-secondary);
@@ -990,13 +1093,11 @@
       opacity: 1;
     }
 
-    /* Focus styles for accessibility */
     .faq-item:focus-visible {
       outline: 2px solid var(--accent-secondary);
       outline-offset: 2px;
     }
 
-    /* Ensure proper spacing */
     .faq-answer p {
       margin: 0;
     }
@@ -1008,13 +1109,11 @@
     button:focus, input:focus { outline: 2px solid var(--accent-secondary); outline-offset: 2px; }
     a:focus { outline: none; }
 
-    /* Ensure all content respects viewport width */
     img {
       max-width: 100%;
       height: auto;
     }
 
-    /* Ensure no element extends beyond viewport */
     * {
       max-width: 100%;
     }
@@ -1022,6 +1121,7 @@
     @media (max-width: 768px) {
       .container { padding: 0 15px; }
       .logo-container img { height: 36px; }
+      .hero-section { padding: 40px 0 100px; }
       .hero-headline { font-size: 2.5rem; }
       .hero-subtitle { font-size: 1.1rem; }
       .hero-ctas { 
@@ -1041,14 +1141,10 @@
         max-width: 90%;
       }
       
-      /* Mobile gallery reorder - Package Preview first */
-      #package-slide { order: 1; }
-      #properties-slide { order: 2; }
-      #review-slide { order: 3; }
-      
       .plan-steps { grid-template-columns: 1fr; }
       .relief-headline { font-size: 2rem; }
       .section-title { font-size: 2rem; }
+      .value-prop-title { font-size: 1.2rem; }
       .free-preview-title { font-size: 1.8rem; }
       .free-preview-features { grid-template-columns: 1fr; gap: 15px; }
       .stats-grid { grid-template-columns: 1fr; gap: 15px; }
@@ -1068,7 +1164,6 @@
       
       .back-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.1rem; }
 
-      /* Mobile FAQ adjustments */
       .faq-question { 
         font-size: 1rem;
         padding: 20px;
@@ -1076,6 +1171,10 @@
       
       .faq-item.active .faq-answer {
         padding: 0 20px 20px;
+      }
+      
+      .scroll-cue {
+        bottom: 20px;
       }
     }
     
@@ -1096,7 +1195,6 @@
       
       .back-to-top { width: 45px; height: 45px; bottom: 15px; right: 15px; font-size: 1rem; }
 
-      /* Smaller FAQ styling */
       .faq-question { 
         font-size: 0.95rem;
         padding: 18px;
@@ -1157,7 +1255,6 @@
         margin: 12px 0;
       }
 
-      /* Very small screen FAQ */
       .faq-question { 
         font-size: 0.9rem;
         padding: 15px;
@@ -1178,29 +1275,17 @@
   <!-- Header -->
   <header class="header" role="banner">
     <div class="container">
-          <nav class="header-content" role="navigation" aria-label="Main navigation">
+      <nav class="header-content" role="navigation" aria-label="Main navigation">
         <div class="logo-container">
-          <a href="https://925adhd.com" aria-label="925 ADHD Home">
+          <a href="https://925adhd.com" aria-label="925 ADHD Home" class="home-link">
             <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" width="175" height="175" loading="eager" fetchpriority="high" decoding="async">
           </a>
-         <style>
-  .home-link:link,
-  .home-link:visited,
-  .home-link:hover,
-  .home-link:active {
-    color: #ffffff !important;  /* always white */
-    text-decoration: none;      /* optional: remove underline */
-  }
-</style>
-
-
-
         </div>
       </nav>
     </div>
   </header>
 
- <!-- Main -->
+  <!-- Main -->
 <main id="main" role="main">
   <!-- HERO Section -->
   <section class="hero-section" aria-labelledby="hero-title">
@@ -1211,136 +1296,139 @@
 
     <div class="hero-badge" aria-hidden="true">🧠 Built by someone with ADHD</div>
 
-    <p class="hero-subtitle" style="font-size: .95rem; margin: 10px 0 20px;">
-      <center>Stop researching. Start earning.<br><br> 50+ <i>ADHD-friendly</i> ways to earn 
-  <span style="font-size: 1.2em; color: #10b981 !important; -webkit-text-fill-color: #10b981 !important; font-weight: 900;">online</span> — all in one organized app.
-  Honest reviews ❤️ so you can pick sites that actually fit your brain.
-</p>
-  
-      <!-- Swipeable Image Gallery -->
-      <div class="image-gallery" role="region" aria-label="App preview gallery">
-        <div class="gallery-container" id="galleryContainer">
-        <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/side%20panel-709af1d.png" 
-                 alt="925 ADHD App Side Panel Interface" 
-                 loading="lazy" 
-                 decoding="async"
-                 width="640" 
-                 height="360">
-          </div>
-        
-          <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
-                 alt="925 ADHD App Package Preview" 
-                 loading="lazy" 
-                 decoding="async"
-                 width="640" 
-                 height="360">
-          </div>
-          <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" 
-                 alt="925 ADHD App Properties Preview" 
-                 loading="eager" 
-                 fetchpriority="high" 
-                 decoding="async"
-                 width="640" 
-                 height="360">
-          </div>
-           <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/cash.png" 
-                 alt="925 ADHD App Earnings Dashboard" 
-                 loading="lazy" 
-                 decoding="async"
-                 width="640" 
-                 height="360">
-          </div>
-          <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/review.png" 
-                 alt="925 ADHD App Review Preview" 
-                 loading="lazy" 
-                 decoding="async"
-                 width="640" 
-                 height="360">
-          </div>
+        <p class="hero-subtitle" style="font-size: .95rem; margin: 10px 0 20px;">
+          Stop researching. Start earning.
+        </p>
+
+    
+        <!-- Swipeable Image Gallery -->
+        <div class="image-gallery" role="region" aria-label="App preview gallery">
+          <div class="gallery-container" id="galleryContainer">
             <div class="gallery-slide">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/favorite.png" 
-                 alt="925 ADHD App Review Preview" 
-                 loading="lazy" 
-                 decoding="async"
-                 width="640" 
-                 height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/side%20panel-709af1d.png" 
+                   alt="925 ADHD App Side Panel Interface" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="640" 
+                   height="360">
+            </div>
+            <div class="gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
+                   alt="925 ADHD App Package Preview" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="640" 
+                   height="360">
+            </div>
+            <div class="gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" 
+                   alt="925 ADHD App Properties Preview" 
+                   loading="eager" 
+                   fetchpriority="high" 
+                   decoding="async"
+                   width="640" 
+                   height="360">
+            </div>
+            <div class="gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/cash.png" 
+                   alt="925 ADHD App Earnings Dashboard" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="640" 
+                   height="360">
+            </div>
+            <div class="gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/review.png" 
+                   alt="925 ADHD App Review Preview" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="640" 
+                   height="360">
+            </div>
+            <div class="gallery-slide">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/favorite.png" 
+                   alt="925 ADHD App Favorite Sites" 
+                   loading="lazy" 
+                   decoding="async"
+                   width="640" 
+                   height="360">
+            </div>
           </div>
           
-         
+          <!-- Navigation arrows -->
+          <button class="gallery-nav prev" onclick="changeSlide(-1, 'hero')" aria-label="Previous image">‹</button>
+          <button class="gallery-nav next" onclick="changeSlide(1, 'hero')" aria-label="Next image">›</button>
+        </div>
+
+        <!-- Gallery dots -->
+        <div class="gallery-dots" role="tablist" aria-label="Image gallery navigation">
+          <span class="dot active" onclick="currentSlide(1, 'hero')" role="tab" aria-label="Image 1" tabindex="0"></span>
+          <span class="dot" onclick="currentSlide(2, 'hero')" role="tab" aria-label="Image 2" tabindex="0"></span>
+          <span class="dot" onclick="currentSlide(3, 'hero')" role="tab" aria-label="Image 3" tabindex="0"></span>
+          <span class="dot" onclick="currentSlide(4, 'hero')" role="tab" aria-label="Image 4" tabindex="0"></span>
+          <span class="dot" onclick="currentSlide(5, 'hero')" role="tab" aria-label="Image 5" tabindex="0"></span>
+          <span class="dot" onclick="currentSlide(6, 'hero')" role="tab" aria-label="Image 6" tabindex="0"></span>
+        </div>
+
+               <div style="text-align: center; margin-bottom: 20px;">
+          <p style="color: var(--text-muted); font-size: .85rem; margin: 10px 0 20px; font-style: italic;">
+            *No rabbit holes. Just clear next steps.*
+          </p>
+          
+           <!-- NEW: Value Proposition with Bullet Points -->
+        <div class="value-prop-box">
+          <div class="value-prop-title">One App. Zero Overwhelm.</div>
+          <ul class="value-prop-list">
+            <li class="value-prop-item">
+              <span class="value-prop-icon">✓</span>
+              <span><strong>50+ Flexible vetted ways to earn online</strong> — no scam stress</span>
+            </li>
+            <li class="value-prop-item">
+              <span class="value-prop-icon">✓</span>
+              <span><strong>Honest reviews</strong> — real expectations, no hype</span>
+            </li>
+            <li class="value-prop-item">
+              <span class="value-prop-icon">✓</span>
+              <span><strong>Add your favorites</strong> — keep track of your best gigs that work for your brain.</span>
+            </li>
+          </ul>
+        </div>
+
+          <p class="visually-hidden">
+            Stop research spirals and start earning with ADHD-friendly, vetted websites and step-by-step guidance.
+          </p>
+          
+          <!-- Main CTA -->
+          <div class="hero-ctas">
+            <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" 
+               target="_blank" 
+               rel="noopener" 
+               class="hero-cta-primary" 
+               onclick="trackCTA('hero','Basic',9.25)" 
+               aria-label="Start earning for $9.25">
+              🚀 Start Today
+            </a>
+            
+            <div class="social-proof" aria-label="Key purchase benefits">
+              No subscriptions • 30-day guarantee • ADHD-friendly clarity
+            </div>
+          </div>
         </div>
         
-        <!-- Navigation arrows -->
-        <button class="gallery-nav prev" onclick="changeSlide(-1, 'hero')" aria-label="Previous image">
-          ‹
-        </button>
-        <button class="gallery-nav next" onclick="changeSlide(1, 'hero')" aria-label="Next image">
-          ›
-        </button>
+        <div class="secondary-ctas">
+          <a href="#pricing" class="hero-cta-secondary" aria-label="Jump to pricing">
+            See pricing ↓
+          </a>
+          <a href="#faq-section" class="hero-cta-secondary" aria-label="Jump to FAQ section">
+            See FAQ ↓
+          </a>
+        </div>
       </div>
 
-      <!-- Gallery dots -->
-      <div class="gallery-dots" role="tablist" aria-label="Image gallery navigation">
-        <span class="dot active" onclick="currentSlide(1, 'hero')" role="tab" aria-label="Image 1" tabindex="0"></span>
-        <span class="dot" onclick="currentSlide(2, 'hero')" role="tab" aria-label="Image 2" tabindex="0"></span>
-        <span class="dot" onclick="currentSlide(3, 'hero')" role="tab" aria-label="Image 3" tabindex="0"></span>
-        <span class="dot" onclick="currentSlide(4, 'hero')" role="tab" aria-label="Image 4" tabindex="0"></span>
-        <span class="dot" onclick="currentSlide(5, 'hero')" role="tab" aria-label="Image 5" tabindex="0"></span>
-        <span class="dot" onclick="currentSlide(6, 'hero')" role="tab" aria-label="Image 6" tabindex="0"></span>
-      </div>
-      
-      <div class="container">
-  <div style="text-align: center; margin-bottom: 20px;">
-    
-    <!-- Top reassurance line -->
-    <p style="color: var(--text-muted); font-size: .85rem; margin: 10px 0 20px; font-style: italic;">
-      *No rabbit holes. Just clear next steps.*
-    </p>
-    
-    <!-- Hidden SEO-friendly line -->
-    <p class="visually-hidden">
-      Stop research spirals and start earning with ADHD-friendly, vetted websites and step-by-step guidance.
-    </p>
-    
-    <!-- Main CTA -->
-    <div class="hero-ctas">
-      <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" 
-         target="_blank" 
-         rel="noopener" 
-         class="hero-cta-primary" 
-         onclick="trackCTA('hero','Basic',9.25)" 
-         aria-label="Skip the researching and start earning">
-        🚀 Skip the Researching — Start Earning
-      </a>
-      
-      <!-- Bottom friction remover -->
-      <div class="social-proof" aria-label="Key purchase benefits">
-        No subscriptions • 30-day guarantee • ADHD-friendly clarity
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-  <div class="secondary-ctas">
-    <a href="#pricing" class="hero-cta-secondary" aria-label="Jump to pricing">
-      See pricing ↓
-    </a>
-    <a href="#faq-section" class="hero-cta-secondary" aria-label="Jump to faq-section">
-      See FAQ ↓
-    </a>
-  </div>
-</div>
-       
     <!-- PROOF: Payment Evidence -->
-    
-      <div class="container">
-        <article id="proof" class="proof-section">
-		        <div style="margin-top: 60px; text-align: center;">
+    <section class="container">
+      <article id="proof" class="proof-section">
+        <div style="margin-top: 20px; text-align: center;">
           <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/testimonials.png" 
                alt="Customer reviews and testimonials" 
                style="width:100%; max-width:800px; height:auto; border-radius:12px;" 
@@ -1348,116 +1436,119 @@
                decoding="async">
         </div>
         <div style="text-align:center; margin-top:20px;">
-          <p style="color: var(--text-muted); font-size: .85rem; font-style: italic;">*These are real member results. Results vary but the clarity is consistent.</p>
+          <p style="color: var(--text-muted); font-size: .85rem; font-style: italic;">
+            *Join other ADHDers who've already cut through the noise of online work.*
+          </p>
         </div>
-      </div>
-    </article>
-    
+      </article>
+    </section>
+
     <!-- 3-Step Solution -->
-        <div style="text-align: center; margin: 50px 0;">
-          <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--accent-success); margin-bottom: 20px;">Three Steps to Your First Dollar</h2>
-          <ul class="plan-steps">
-            <li class="plan-step">
-              <div class="plan-step-number">1</div>
-              <div class="plan-step-title">We Did the Research</div>
-              <div class="plan-step-desc">50+ sites fully vetted. No scams, no rabbit holes, just organized clarity.</div>
-            </li>
-            <li class="plan-step">
-              <div class="plan-step-number">2</div>
-              <div class="plan-step-title">Match Your Energy</div>
-              <div class="plan-step-desc">Low energy? Quick tasks. High focus? Bigger projects. Work with your ADHD.</div>
-            </li>
-            <li class="plan-step">
-              <div class="plan-step-number">3</div>
-              <div class="plan-step-title">Start Earning</div>
-              <div class="plan-step-desc">Clear steps, honest timelines, real payouts. $3-14/hour depending on the site.</div>
-            </li>
-          </ul>
+    <div class="container">
+      <div style="text-align: center; margin: 50px 0;">
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--accent-success); margin-bottom: 20px;">Three Steps to Your First Dollar</h2>
+        <ul class="plan-steps">
+          <li class="plan-step">
+            <div class="plan-step-number">1</div>
+            <div class="plan-step-title">We Did the Research</div>
+            <div class="plan-step-desc">50+ sites fully vetted. No scams, no rabbit holes, just organized clarity.</div>
+          </li>
+          <li class="plan-step">
+            <div class="plan-step-number">2</div>
+            <div class="plan-step-title">Match Your Energy</div>
+            <div class="plan-step-desc">Low energy? Quick tasks. High focus? Bigger projects. Work with your ADHD.</div>
+          </li>
+          <li class="plan-step">
+            <div class="plan-step-number">3</div>
+            <div class="plan-step-title">Start Earning</div>
+            <div class="plan-step-desc">Clear steps, honest timelines, real payouts. $3-14/hour depending on the site.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Who It's For Section -->
+    <section style="padding:60px 0;" aria-labelledby="who-its-for">
+      <div class="container">
+        <h2 id="who-its-for" class="section-title">Is This App Right For You...</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; max-width:800px; margin:0 auto;">
+          
+          <!-- Yes Column -->
+          <div style="border:2px solid var(--accent-success); border-radius:16px; padding:30px;">
+            <h3 style="color: var(--accent-success); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">✅ Yes if you:</h3>
+            <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
+              <li>• Get stuck in endless tabs & overthinking</li>
+              <li>• Just want someone to say <em>"do this next"</em></li>
+              <li>• Prefer vetted sites over random "maybe" ones</li>
+              <li>• Want to start earning in days, not months</li>
+              <li>• Like action more than research</li>
+            </ul>
+          </div>
+          
+          <!-- Not For You Column -->
+          <div style="border:1px solid var(--border-subtle); border-radius:16px; padding:30px;">
+            <h3 style="color: var(--accent-danger); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">❌ Not if you:</h3>
+            <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
+              <li>• Want "passive income" with zero effort</li>
+              <li>• Actually enjoy comparing sites for hours</li>
+              <li>• Are chasing get-rich-quick promises</li>
+              <li>• Prefer to DIY everything from scratch</li>
+              <li>• Love complex systems & spreadsheets</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFER: Choose Your Package -->
+    <div class="container">
+      <article id="pricing" class="offer-section">
+        <header>
+          <h2 class="section-title">Get Started Today</h2>
+        </header>
+
+        <!-- Single Basic Pricing Card -->
+        <div id="Basic-package" class="pricing-card popular">
+          <div class="pricing-badge">MOST POPULAR</div>
+          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Basic App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
+          <div class="value-summary">ADHD-friendly app with 50+ vetted sites</div>
+          
+          <!-- UPDATED: Changed CTA text -->
+          <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Unlock the App for $9.25">Basic App — Just $9.25</a>
+          
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
+            <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community — a space just for members who get it</span></div>
+            <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
+          </div>
+          <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
+          <div class="guarantee-box">
+            🔒 <strong>Money-Back Guarantee:</strong> Full refund if it doesn't cut through decision paralysis — no forms, no hoops.
+          </div>
         </div>
 
-   <!-- Who It's For Section -->
-<section style="padding: 60px 0;" aria-labelledby="who-its-for">
-  <div class="container">
-    <h2 id="who-its-for" class="section-title">Is This a Fit for You?</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; max-width:800px; margin:0 auto;">
-      
-      <!-- Yes Column -->
-      <div style="border:2px solid var(--accent-success); border-radius:16px; padding:30px;">
-        <h3 style="color: var(--accent-success); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">✅ Yes if you:</h3>
-        <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
-          <li>• Get stuck in endless tabs & overthinking</li>
-          <li>• Just want someone to say <em>“do this next”</em></li>
-          <li>• Prefer vetted sites over random “maybe” ones</li>
-          <li>• Want to start earning in days, not months</li>
-          <li>• Like action more than research</li>
-        </ul>
-      </div>
-      
-      <!-- Not For You Column -->
-      <div style="border:1px solid var(--border-subtle); border-radius:16px; padding:30px;">
-        <h3 style="color: var(--accent-danger); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">❌ Not if you:</h3>
-        <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
-          <li>• Want “passive income” with zero effort</li>
-          <li>• Actually enjoy comparing sites for hours</li>
-          <li>• Are chasing get-rich-quick promises</li>
-          <li>• Prefer to DIY everything from scratch</li>
-          <li>• Love complex systems & spreadsheets</li>
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</section>
+        <!-- Upgrade Links Section -->
+        <div class="upgrade-links">
+          <h4>Want More Tools & Features?</h4>
+          <p>Upgrade to unlock ADHD productivity tools, personalized site matching, and entrepreneur resources.</p>
+          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="upgrade-link" onclick="trackCTA('pricing','pro',29)">Unlock Pro - $29</a>
+            <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="upgrade-link" onclick="trackCTA('pricing','entrepreneur',129)">Unlock Accelerator - $129</a>
+          </div>
+        </div>
 
-  <!-- OFFER: Choose Your Package -->
-
-<div class="container">
-    
-  <article id="pricing" class="offer-section">
-    <header>
-      <h2 class="section-title">Get Started Today</h2>
-    </header>
-
-    <!-- Single Basic Pricing Card -->
-    <div id="Basic-package" class="pricing-card popular">
-      <div class="pricing-badge">MOST POPULAR</div>
-      <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Basic App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-      <div class="value-summary">ADHD-friendly app with 50+ pre-researched sites</div>
-      
-      <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Get Basic App for $9.25">Basic App - $9.25</a>
-      
-      <div class="feature-list">
-        <div class="feature-item"><span class="feature-icon">✓</span><span>ADHD‑Friendly Web App with 50+ Pre‑Researched Sites 💸</span></div>
-        <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
-        <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community — a space just for members who get it</span></div>
-        <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
-      </div>
-      <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
-      <div class="guarantee-box">💡 Full refund if it doesn’t cut through decision paralysis — no forms, no hoops.</div>
+        <div style="text-align:center; margin-top:40px;">
+          <p style="color: var(--text-secondary); font-size: 1rem;">30‑day money‑back guarantee • Lifetime access to content</p>
+        </div>
+      </article>
     </div>
 
-    <!-- Upgrade Links Section -->
-    <div class="upgrade-links">
-      <h4>Want More Tools & Features?</h4>
-      <p>Upgrade to unlock ADHD productivity tools, personalized site matching, and entrepreneur resources.</p>
-      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="upgrade-link" onclick="trackCTA('pricing','pro',29)">Pro Toolkit - $29</a>
-        <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="upgrade-link" onclick="trackCTA('pricing','entrepreneur',129)">Entrepreneur Accelerator - $129</a>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top:40px;">
-      <p style="color: var(--text-secondary); font-size: 1rem;">30‑day money‑back guarantee • Lifetime access to content</p>
-    </div>
-  </article>
-</div>
- 
-   <!-- FREE PREVIEW Section -->
+    <!-- FREE PREVIEW Section -->
 <section class="free-preview-section" aria-labelledby="free-preview-title">
   <div class="container">
     <div class="free-preview-container">
       
-      <!-- Logo added here -->
       <img 
         src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/final%20free%20logo.png" 
         alt="925 ADHD Logo" 
@@ -1472,35 +1563,37 @@
         First
       </h2>
 
+      <p class="free-preview-subtitle">
+        Quick test drive with 10+ vetted sites. See if our zero-overwhelm approach works for your brain.
+      </p>
+      
+      <a href="https://free.925adhd.com" 
+         target="_blank" 
+         rel="noopener" 
+         class="free-preview-cta" 
+         onclick="trackCTA('free-preview','mini-version',0)"
+         aria-label="Try the free version">
+        🔍 Try Free Version
+      </a>
 
-          <p class="free-preview-subtitle">
-            Quick test drive with 10+ vetted sites. See if our zero-overwhelm approach works for your brain.
-          </p>
-          
-          <a href="https://free.925adhd.com" 
-             target="_blank" 
-             rel="noopener" 
-             class="free-preview-cta" 
-             onclick="trackCTA('free-preview','mini-version',0)"
-             aria-label="Try the free version">
-            🔍 Try Free Version
-          </a>
+      <!-- No CC required text -->
+      <p class="no-cc-text">No credit card needed. Just clarity.</p>
 
-          <div class="free-preview-features">
-            <div class="free-preview-feature">
-              <h4>✨ 10+ Pre-Selected Sites</h4>
-            </div>
-            <div class="free-preview-feature">
-              <h4>🎯 Zero Research Required</h4>
-            </div>
-          </div>
-
-          <p style="color: var(--text-muted); font-size: .9rem; margin-top: 25px; font-style: italic;">
-            Like it? Upgrade to all 50+ sites anytime.
-          </p>
+      <div class="free-preview-features">
+        <div class="free-preview-feature">
+          <h4>✨ 10+ Pre-Selected Sites</h4>
+        </div>
+        <div class="free-preview-feature">
+          <h4>🎯 Zero Research Required</h4>
         </div>
       </div>
-    </section>
+
+      <p style="color: var(--text-muted); font-size: .9rem; margin-top: 25px; font-style: italic;">
+        Like it? Upgrade to all 50+ sites anytime.
+      </p>
+    </div>
+  </div>
+</section>
 
     <!-- FAQ - 5 Critical Questions Only -->
     <section class="faq-section" aria-labelledby="faq-title">
@@ -1556,7 +1649,7 @@
   <footer style="background: var(--secondary-bg); padding: 40px 0 80px; border-top: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="text-align: center;">
-        <nav aria-label="Footer navigation" style="margin-bottom: 20px;"><center></center>
+        <nav aria-label="Footer navigation" style="margin-bottom: 20px;">
           <a href="https://925adhd.com" style="color: var(--text-secondary); text-decoration: none; margin: 0 15px; font-size: .9rem; transition: color .3s;" onmouseover="this.style.color='var(--accent-secondary)'" onmouseout="this.style.color='var(--text-secondary)'">Home</a>
           <a href="https://925adhd.com/terms-of-service" style="color: var(--text-secondary); text-decoration: none; margin: 0 15px; font-size: .9rem; transition: color .3s;" onmouseover="this.style.color='var(--accent-secondary)'" onmouseout="this.style.color='var(--text-secondary)'">Terms of Service</a>
           <a href="https://925adhd.com/privacy-policy" style="color: var(--text-secondary); text-decoration: none; margin: 0 15px; font-size: .9rem; transition: color .3s;" onmouseover="this.style.color='var(--accent-secondary)'" onmouseout="this.style.color='var(--text-secondary)'">Privacy Policy</a>
@@ -1564,29 +1657,23 @@
           <a href="https://925adhd.com/contact" style="color: var(--text-secondary); text-decoration: none; margin: 0 15px; font-size: .9rem; transition: color .3s;" onmouseover="this.style.color='var(--accent-secondary)'" onmouseout="this.style.color='var(--accent-secondary)'">Contact</a>
         </nav>
         <p style="color: var(--text-muted); font-size: .85rem; margin-bottom: 10px;">💡 Copyright © 2025 925 ADHD LLC — All Rights Reserved. 🧠</p>
-      
       </div>
     </div>
   </footer>
 
-  <!-- ===================== Scripts ===================== -->
-  <!-- One gtag loader is enough; configure multiple IDs below -->
+  <!-- Scripts -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11509175122"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);} 
     gtag('js', new Date());
-    // Ads Conversion ID
     gtag('config', 'AW-11509175122');
-    // TODO: Replace with your GA4 ID when ready
     gtag('config', 'G-XXXXXXXXXX');
 
-    // CTA click tracking
     function trackCTA(location, package_type, amount){
       gtag('event','click_cta',{event_category:'engagement',event_label: location + '_' + package_type, value: amount || 0});
     }
 
-    // Scroll depth tracking
     (function(){
       var depths=[25,50,75,90], tracked=[];
       window.addEventListener('scroll', function(){
@@ -1600,7 +1687,24 @@
       });
     })();
 
-    // Gallery functionality - Updated to handle multiple galleries
+    // NEW: Scroll cue functionality
+    function smoothScrollToNext() {
+      const heroSection = document.querySelector('.hero-section');
+      const nextSection = heroSection.nextElementSibling;
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Hide scroll cue after user scrolls
+    window.addEventListener('scroll', function() {
+      const scrollCue = document.querySelector('.scroll-cue');
+      if (window.scrollY > 100) {
+        scrollCue.classList.add('hidden');
+      }
+    });
+
+    // Gallery functionality
     const galleries = {
       hero: {
         currentSlideIndex: 0,
@@ -1616,15 +1720,12 @@
       }
     };
 
-    // Initialize gallery to start on second image (Package Preview) for all devices
     window.addEventListener('load', function() {
-      // Start hero with Package Preview (index 1) on all devices
       setTimeout(function() {
         galleries.hero.currentSlideIndex = 1;
-        const translateX = -100; // -100% for second slide
+        const translateX = -100;
         galleries.hero.container.style.transform = `translateX(${translateX}%)`;
         
-        // Update dots
         galleries.hero.dots.forEach(dot => dot.classList.remove('active'));
         if (galleries.hero.dots[1]) {
           galleries.hero.dots[1].classList.add('active');
@@ -1632,7 +1733,6 @@
       }, 100);
     });
     
-    // Touch/swipe functionality
     let startX = 0;
     let startY = 0;
     let endX = 0;
@@ -1651,13 +1751,11 @@
       const translateX = -gallery.currentSlideIndex * 100;
       gallery.container.style.transform = `translateX(${translateX}%)`;
       
-      // Update dots
       gallery.dots.forEach(dot => dot.classList.remove('active'));
       if (gallery.dots[gallery.currentSlideIndex]) {
         gallery.dots[gallery.currentSlideIndex].classList.add('active');
       }
       
-      // Track gallery interaction
       gtag('event','gallery_slide_change',{event_category:'engagement',event_label: galleryType + '_slide_' + (gallery.currentSlideIndex + 1), value: gallery.currentSlideIndex + 1});
     }
 
@@ -1675,7 +1773,6 @@
       showSlide(gallery.currentSlideIndex, galleryType);
     }
 
-    // Setup touch/swipe event listeners for all galleries
     Object.keys(galleries).forEach(galleryType => {
       const gallery = galleries[galleryType];
       if (gallery.container) {
@@ -1695,13 +1792,10 @@
           const diffX = Math.abs(currentX - startX);
           const diffY = Math.abs(currentY - startY);
           
-          // Determine swipe direction - only prevent default for horizontal swipes
           if (diffX > diffY && diffX > 10) {
-            // Horizontal swipe detected - prevent default to handle gallery navigation
             isHorizontalSwipe = true;
             e.preventDefault();
           } else if (diffY > diffX && diffY > 10) {
-            // Vertical swipe detected - allow normal page scrolling
             isDragging = false;
             isHorizontalSwipe = false;
           }
@@ -1717,7 +1811,6 @@
           currentGallery = null;
         });
 
-        // Mouse drag for desktop
         gallery.container.addEventListener('mousedown', (e) => {
           startX = e.clientX;
           isDragging = true;
@@ -1747,11 +1840,9 @@
           }
         });
 
-        // Initialize gallery cursor
         gallery.container.style.cursor = 'grab';
       }
 
-      // Setup dot keyboard navigation
       gallery.dots.forEach((dot, index) => {
         dot.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -1768,16 +1859,13 @@
       
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
-          // Swiped left - next slide
           changeSlide(1, galleryType);
         } else {
-          // Swiped right - previous slide
           changeSlide(-1, galleryType);
         }
       }
     }
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft' && currentGallery) {
         changeSlide(-1, currentGallery);
@@ -1786,11 +1874,9 @@
       }
     });
 
-    // Interactive FAQ functionality
     function toggleFAQ(element) {
       const isActive = element.classList.contains('active');
       
-      // Close all other FAQ items
       document.querySelectorAll('.faq-item.active').forEach(item => {
         if (item !== element) {
           item.classList.remove('active');
@@ -1798,7 +1884,6 @@
         }
       });
       
-      // Toggle the clicked item
       if (isActive) {
         element.classList.remove('active');
         element.setAttribute('aria-expanded', 'false');
@@ -1806,7 +1891,6 @@
         element.classList.add('active');
         element.setAttribute('aria-expanded', 'true');
         
-        // Track FAQ expansion
         const questionText = element.querySelector('.faq-question').textContent.replace(/▼/g, '').trim();
         gtag('event', 'faq_expand', {
           event_category: 'engagement',
@@ -1816,7 +1900,6 @@
       }
     }
 
-    // Add keyboard support for FAQ items
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('keydown', function(e) {
@@ -1828,21 +1911,53 @@
       });
     });
 
-    // Back to top
-    function scrollToTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); gtag('event','back_to_top',{event_category:'navigation',event_label:'back_to_top_button'}); }
-    function toggleBackToTop(){ const btn=document.querySelector('.back-to-top'); const y=window.pageYOffset||document.documentElement.scrollTop; if(y>300){btn.classList.add('visible')} else {btn.classList.remove('visible')} }
+    function scrollToTop(){ 
+      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      gtag('event','back_to_top',{event_category:'navigation',event_label:'back_to_top_button'}); 
+    }
+    
+    function toggleBackToTop(){ 
+      const btn=document.querySelector('.back-to-top'); 
+      const y=window.pageYOffset||document.documentElement.scrollTop; 
+      if(y>300){btn.classList.add('visible')} else {btn.classList.remove('visible')} 
+    }
+    
     window.addEventListener('scroll', toggleBackToTop);
 
-    // Modal
-    function openModal(src){ const m=document.getElementById('imageModal'); const img=document.getElementById('modalImg'); m.style.display='block'; m.setAttribute('aria-hidden','false'); img.src=src; document.body.style.overflow='hidden'; document.querySelector('.modal-close').focus(); gtag('event','open_proof_modal',{event_category:'engagement',event_label:'proof_image'}); }
-    function closeModal(){ const m=document.getElementById('imageModal'); m.style.display='none'; m.setAttribute('aria-hidden','true'); document.body.style.overflow='auto'; }
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && document.getElementById('imageModal').style.display==='block'){ closeModal(); }});
+    function openModal(src){ 
+      const m=document.getElementById('imageModal'); 
+      const img=document.getElementById('modalImg'); 
+      m.style.display='block'; 
+      m.setAttribute('aria-hidden','false'); 
+      img.src=src; 
+      document.body.style.overflow='hidden'; 
+      document.querySelector('.modal-close').focus(); 
+      gtag('event','open_proof_modal',{event_category:'engagement',event_label:'proof_image'}); 
+    }
+    
+    function closeModal(){ 
+      const m=document.getElementById('imageModal'); 
+      m.style.display='none'; 
+      m.setAttribute('aria-hidden','true'); 
+      document.body.style.overflow='auto'; 
+    }
+    
+    document.addEventListener('keydown', function(e){ 
+      if(e.key==='Escape' && document.getElementById('imageModal').style.display==='block'){ 
+        closeModal(); 
+      }
+    });
 
-    // Smooth scrolling with header offset
     document.querySelectorAll('a[href^="#"]').forEach(function(a){
       a.addEventListener('click', function(e){
-        var id=this.getAttribute('href'); if(id.length<2) return; var target=document.querySelector(id); if(!target) return; e.preventDefault();
-        var header=document.querySelector('.header'); var offset=header?header.offsetHeight:70; var top=target.getBoundingClientRect().top + window.pageYOffset - offset - 15;
+        var id=this.getAttribute('href'); 
+        if(id.length<2) return; 
+        var target=document.querySelector(id); 
+        if(!target) return; 
+        e.preventDefault();
+        var header=document.querySelector('.header'); 
+        var offset=header?header.offsetHeight:70; 
+        var top=target.getBoundingClientRect().top + window.pageYOffset - offset - 15;
         window.scrollTo({ top: top, behavior: 'smooth' });
       });
     });
