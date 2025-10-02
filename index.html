@@ -867,8 +867,8 @@
     .guarantee-box strong { color: var(--accent-success); }
     
     .upgrade-links {
-      background: var(--card-bg);
-      border: 1px solid var(--border-subtle);
+      background: transparent;
+      border: none;
       border-radius: 12px;
       padding: 20px;
       margin-top: 20px;
@@ -1375,34 +1375,39 @@
           </ul>
         </div>
 
-    <!-- Who It's For Section -->
-    <section style="padding: 60px 0;" aria-labelledby="who-its-for">
-      <div class="container">
-        <h2 id="who-its-for" class="section-title">Is This Right for You?</h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; max-width:800px; margin:0 auto;">
-          <div style="border:2px solid var(--accent-success); border-radius:16px; padding:30px;">
-            <h3 style="color: var(--accent-success); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">✅ Yes if you:</h3>
-            <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
-              <li>• Hate research spirals</li>
-              <li>• Need "do this next" clarity</li>
-              <li>• Want vetted sites only</li>
-              <li>• Ready to work (not wait)</li>
-              <li>• Prefer action over comparison</li>
-            </ul>
-          </div>
-          <div style="border:1px solid var(--border-subtle); border-radius:16px; padding:30px;">
-            <h3 style="color: var(--accent-danger); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">❌ Not if you:</h3>
-            <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
-              <li>• Want passive income</li>
-              <li>• Love endless research</li>
-              <li>• Seek get-rich-quick</li>
-              <li>• Want to DIY everything</li>
-              <li>• Prefer complex systems</li>
-            </ul>
-          </div>
-        </div>
+   <!-- Who It's For Section -->
+<section style="padding: 60px 0;" aria-labelledby="who-its-for">
+  <div class="container">
+    <h2 id="who-its-for" class="section-title">Is This a Fit for You?</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; max-width:800px; margin:0 auto;">
+      
+      <!-- Yes Column -->
+      <div style="border:2px solid var(--accent-success); border-radius:16px; padding:30px;">
+        <h3 style="color: var(--accent-success); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">✅ Yes if you:</h3>
+        <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
+          <li>• Get stuck in endless tabs & overthinking</li>
+          <li>• Just want someone to say <em>“do this next”</em></li>
+          <li>• Prefer vetted sites over random “maybe” ones</li>
+          <li>• Want to start earning in days, not months</li>
+          <li>• Like action more than research</li>
+        </ul>
       </div>
-    </section>
+      
+      <!-- Not For You Column -->
+      <div style="border:1px solid var(--border-subtle); border-radius:16px; padding:30px;">
+        <h3 style="color: var(--accent-danger); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">❌ Not if you:</h3>
+        <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
+          <li>• Want “passive income” with zero effort</li>
+          <li>• Actually enjoy comparing sites for hours</li>
+          <li>• Are chasing get-rich-quick promises</li>
+          <li>• Prefer to DIY everything from scratch</li>
+          <li>• Love complex systems & spreadsheets</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
 
   <!-- OFFER: Choose Your Package -->
 
@@ -1428,7 +1433,7 @@
         <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
       </div>
       <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
-      <div class="guarantee-box"><strong>Try it for 30 days.</strong> If it doesn't cut through your decision paralysis and help you start earning, email us for a full refund—no forms, no hoops.</div>
+      <div class="guarantee-box">💡 Full refund if it doesn’t cut through decision paralysis — no forms, no hoops.</div>
     </div>
 
     <!-- Upgrade Links Section -->
@@ -1442,7 +1447,7 @@
     </div>
 
     <div style="text-align:center; margin-top:40px;">
-      <p style="color: var(--text-secondary); font-size: 1rem;">30‑day money‑back guarantee • Lifetime access to content • No decision anxiety, ever</p>
+      <p style="color: var(--text-secondary); font-size: 1rem;">30‑day money‑back guarantee • Lifetime access to content</p>
     </div>
   </article>
 </div>
