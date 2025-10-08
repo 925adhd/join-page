@@ -1180,6 +1180,11 @@
     let currentSlideIndex = 0;
     const slides = document.querySelectorAll('.gallery-slide');
     const dots = document.querySelectorAll('.dot');
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let isDragging = false;
+    let isHorizontalSwipe = false;
 
     function showSlide(n) {
       if (n >= slides.length) currentSlideIndex = 0;
@@ -1200,6 +1205,81 @@
     function currentSlide(n) {
       currentSlideIndex = n - 1;
       showSlide(currentSlideIndex);
+    }
+
+    // Touch/Swipe functionality
+    const galleryContainer = document.getElementById('galleryContainer');
+    
+    galleryContainer.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      isHorizontalSwipe = false;
+    });
+
+    galleryContainer.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const diffX = Math.abs(currentX - startX);
+      const diffY = Math.abs(currentY - startY);
+      
+      if (diffX > diffY && diffX > 10) {
+        isHorizontalSwipe = true;
+        e.preventDefault();
+      } else if (diffY > diffX && diffY > 10) {
+        isDragging = false;
+        isHorizontalSwipe = false;
+      }
+    });
+
+    galleryContainer.addEventListener('touchend', (e) => {
+      if (!isDragging || !isHorizontalSwipe) return;
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+      isDragging = false;
+      isHorizontalSwipe = false;
+    });
+
+    // Mouse drag functionality for desktop
+    galleryContainer.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      isDragging = true;
+      galleryContainer.style.cursor = 'grabbing';
+    });
+
+    galleryContainer.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+    });
+
+    galleryContainer.addEventListener('mouseup', (e) => {
+      if (!isDragging) return;
+      endX = e.clientX;
+      handleSwipe();
+      isDragging = false;
+      galleryContainer.style.cursor = 'grab';
+    });
+
+    galleryContainer.addEventListener('mouseleave', () => {
+      if (isDragging) {
+        isDragging = false;
+        galleryContainer.style.cursor = 'grab';
+      }
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = startX - endX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          changeSlide(1);
+        } else {
+          changeSlide(-1);
+        }
+      }
     }
 
     function toggleFAQ(element) {
