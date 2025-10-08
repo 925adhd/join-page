@@ -47,7 +47,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://img1.wsimg.com" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preload" as="image" href="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png" imagesrcset="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png 1200w" fetchpriority="high">
 
   <!-- Fonts -->
@@ -156,29 +155,12 @@
           "@type": "Answer",
           "text": "Yes—designed by someone with ADHD for ADHD brains. Short sessions, single-focus layouts, clear next steps. No decision paralysis."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I know you're legit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Stripe handles all payments (same as Netflix, Uber). Instant access, no subscriptions. 30-day money-back guarantee. Zero risk."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does lifetime access mean?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Lifetime access to all content and site directory. No subscriptions ever. If hosting ends, you get downloadable offline version."
-        }
       }
     ]
   }
   </script>
-
-  <!-- Styles -->
-   <style>
+  
+  <style>
     :root {
       --primary-bg: #0f1419;
       --secondary-bg: #1a1f2e;
@@ -190,11 +172,9 @@
       --accent-primary: #4f46e5;
       --accent-secondary: #06b6d4;
       --accent-success: #10b981;
-      --accent-warning: #f59e0b;
       --accent-danger: #ef4444;
       --border-subtle: rgba(255, 255, 255, 0.12);
       --border-bright: rgba(255, 255, 255, 0.2);
-      --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.25);
       --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.35);
       --shadow-strong: 0 16px 64px rgba(0, 0, 0, 0.45);
       --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
@@ -202,7 +182,6 @@
       --gradient-adhd: linear-gradient(135deg, #4f46e5 0%, #06b6d4 50%, #10b981 100%);
     }
     
-    /* MOBILE FIX: Prevent horizontal scrolling */
     html, body { 
       margin: 0; 
       padding: 0; 
@@ -215,9 +194,9 @@
       margin: 0; 
       padding: 0; 
       box-sizing: border-box;
-      /* Prevent text overflow */
       word-wrap: break-word;
       overflow-wrap: break-word;
+      max-width: 100%;
     }
     
     body { 
@@ -230,11 +209,14 @@
       max-width: 100vw;
     }
     
-    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
-    .bg-gradient { position: fixed; inset: 0; background:
-      radial-gradient(ellipse at top, rgba(79,70,229,.1) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(16,185,129,.08) 0%, transparent 50%);
-      z-index: -1; }
+    .bg-gradient { 
+      position: fixed; 
+      inset: 0; 
+      background:
+        radial-gradient(ellipse at top, rgba(79,70,229,.1) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(16,185,129,.08) 0%, transparent 50%);
+      z-index: -1; 
+    }
     
     .container { 
       max-width: 1200px; 
@@ -244,6 +226,7 @@
       box-sizing: border-box;
     }
     
+    /* HEADER STYLES */
     .header { 
       position: sticky; 
       top: 0; 
@@ -252,7 +235,6 @@
       backdrop-filter: blur(20px); 
       border-bottom: 1px solid var(--border-subtle);
       width: 100%;
-      overflow: hidden;
     }
     
     .header-content { 
@@ -263,54 +245,106 @@
       width: 100%;
     }
     
-     .logo-container a { display: flex; align-items: center; text-decoration: none; }
-    .logo-container img { height: 40px; width: auto; max-width: 100%; }
-    .back-to-top { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background: var(--gradient-primary); color: #fff; border: 0; border-radius: 50%; cursor: pointer; font-size: 1.2rem; font-weight: 700; box-shadow: var(--shadow-medium); transition: .3s; z-index: 999; opacity: 0; visibility: hidden; transform: translateY(20px); }
-    .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-    .back-to-top:hover { transform: translateY(-3px); box-shadow: var(--shadow-strong); }
-    
-    .hero-section { 
-      padding: 0px 0px; 
-      text-align: center;
-      width: 100%;
-      overflow: hidden;
+    .logo-container a { 
+      display: flex; 
+      align-items: center; 
+      text-decoration: none; 
     }
     
-    .hero-badge { display: inline-block; background: var(--gradient-primary); color: #fff; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: .9rem; margin-bottom: 0px; }
+    .logo-container img { 
+      height: 40px; 
+      width: auto; 
+      max-width: 100%; 
+    }
+    
+    /* BACK TO TOP BUTTON */
+    .back-to-top { 
+      position: fixed; 
+      bottom: 25px; 
+      right: 25px; 
+      width: 55px; 
+      height: 55px; 
+      background: var(--gradient-primary); 
+      color: #fff; 
+      border: 0; 
+      border-radius: 50%; 
+      cursor: pointer; 
+      font-size: 1.2rem; 
+      font-weight: 700; 
+      box-shadow: var(--shadow-medium); 
+      transition: .3s; 
+      z-index: 999; 
+      opacity: 0; 
+      visibility: hidden; 
+      transform: translateY(20px); 
+    }
+    
+    .back-to-top.visible { 
+      opacity: 1; 
+      visibility: visible; 
+      transform: translateY(0); 
+    }
+    
+    .back-to-top:hover { 
+      transform: translateY(-3px); 
+      box-shadow: var(--shadow-strong); 
+    }
+    
+    /* CENTERED SECTIONS */
+    section, article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-section { 
+      padding: 40px 0; 
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-badge { 
+      display: inline-block; 
+      background: var(--gradient-primary); 
+      color: #fff; 
+      padding: 8px 16px; 
+      border-radius: 999px; 
+      font-weight: 700; 
+      font-size: .9rem; 
+      margin-bottom: 20px; 
+    }
     
     .hero-headline { 
       font-size: 3.2rem; 
       font-weight: 900; 
       line-height: 1.1; 
-      margin: 0px 0 16px; 
+      margin: 0 0 16px; 
       background: var(--gradient-adhd); 
       background-size: 200% 200%; 
       -webkit-background-clip: text; 
       background-clip: text; 
       -webkit-text-fill-color: transparent;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+      text-align: center;
     }
     
     .hero-subtitle { 
-  font-size: 1.3rem; 
-  color: var(--text-secondary); 
-  max-width: 720px; 
-  margin: 0 auto 30px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  text-align: center; 
-}
-
+      font-size: 1.3rem; 
+      color: var(--text-secondary); 
+      max-width: 720px; 
+      margin: 0 auto 30px;
+      text-align: center; 
+    }
     
-    /* UPDATED: Value proposition with bullet points */
     .value-prop-box {
       background: var(--glass-bg);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 25px;
       max-width: 700px;
-      margin: 30px 20px;
+      margin: 30px auto;
       text-align: left;
     }
     
@@ -336,10 +370,6 @@
       color: var(--text-secondary);
     }
     
-    .value-prop-item:last-child {
-      margin-bottom: 0;
-    }
-    
     .value-prop-icon {
       color: var(--accent-success);
       margin-right: 12px;
@@ -348,14 +378,14 @@
       font-size: 1.2rem;
     }
     
-    /* UPDATED HERO CTA STYLES */
     .hero-ctas { 
       display: flex; 
       flex-direction: column; 
       gap: 1rem; 
       align-items: center; 
-      margin: 30px 0 20px;
+      margin: 30px auto 20px;
       width: 100%;
+      max-width: 400px;
     }
     
     .hero-cta-primary { 
@@ -369,9 +399,7 @@
       transition: .3s; 
       box-shadow: var(--shadow-medium); 
       display: inline-block;
-      max-width: 100%;
       text-align: center;
-      box-sizing: border-box;
     }
     
     .hero-cta-primary:hover { 
@@ -379,20 +407,16 @@
       box-shadow: var(--shadow-strong); 
     }
     
-   
     .social-proof { 
       margin: 0.5rem 0;
       text-align: center;
       color: var(--text-muted); 
       font-size: .9rem;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
     
     .secondary-ctas {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
       justify-content: center;
       width: 100%;
     }
@@ -403,15 +427,13 @@
       text-decoration: none; 
       padding: 8px 0; 
       transition: color .3s; 
-      margin: 0.25rem;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
     
-    .hero-cta-secondary:hover { color: var(--accent-primary); }
+    .hero-cta-secondary:hover { 
+      color: var(--accent-primary); 
+    }
 
-    /* Image Gallery Styles */
-    .image-gallery, .proof-gallery {
+    .image-gallery {
       position: relative;
       max-width: 400px;
       margin: 30px auto;
@@ -419,41 +441,26 @@
       width: 100%;
     }
 
-    .gallery-container, .proof-gallery-container {
+    .gallery-container {
       display: flex;
       transition: transform 0.3s ease-in-out;
       cursor: grab;
       width: 100%;
     }
 
-    .gallery-container:active, .proof-gallery-container:active {
-      cursor: grabbing;
-    }
-
-    .gallery-slide, .proof-gallery-slide {
+    .gallery-slide {
       min-width: 100%;
       position: relative;
       flex-shrink: 0;
     }
 
-    .gallery-slide img, .proof-gallery-slide img {
+    .gallery-slide img {
       width: 100%;
       height: auto;
       display: block;
-      max-width: 100%;
     }
 
-    .no-visited-style:link,
-    .no-visited-style:visited {
-      color: inherit;
-      text-decoration: underline;
-    }
-
-    .no-visited-style:hover {
-      color: #0073e6;
-    }
-
-    .gallery-dots, .proof-gallery-dots {
+    .gallery-dots {
       display: flex;
       justify-content: center;
       gap: 8px;
@@ -461,7 +468,7 @@
       width: 100%;
     }
 
-    .dot, .proof-dot {
+    .dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -469,19 +476,14 @@
       cursor: pointer;
       transition: background 0.3s ease;
       opacity: 0.6;
-      flex-shrink: 0;
     }
 
-    .dot.active, .proof-dot.active {
+    .dot.active {
       background: var(--accent-secondary);
       opacity: 1;
     }
 
-    .dot:hover, .proof-dot:hover {
-      opacity: 0.8;
-    }
-
-    .gallery-nav, .proof-gallery-nav {
+    .gallery-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -496,90 +498,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s ease;
       z-index: 10;
       opacity: 0.8;
-      outline: none;
     }
 
-    .gallery-nav:hover, .proof-gallery-nav:hover {
-      background: rgba(0,0,0,0.7);
-      opacity: 1;
-    }
-
-    .gallery-nav:focus, .proof-gallery-nav:focus {
-      outline: none;
-    }
-
-    .gallery-nav.prev, .proof-gallery-nav.prev {
+    .gallery-nav.prev {
       left: 15px;
     }
 
-    .gallery-nav.next, .proof-gallery-nav.next {
+    .gallery-nav.next {
       right: 15px;
-    }
-
-    @media (hover: none) {
-      .gallery-nav, .proof-gallery-nav {
-        opacity: 0.4;
-      }
     }
 
     @media (min-width: 769px) {
       .image-gallery {
         max-width: 500px;
       }
-      
-      .gallery-container {
-        cursor: grab;
-      }
-      
-      .gallery-slide {
-        min-width: 100%;
-        flex-shrink: 0;
-      }
-      
-      .gallery-nav {
-        display: flex;
-      }
-      
-      .gallery-dots {
-        display: flex;
-      }
-
-      .proof-gallery {
-        max-width: 800px;
-      }
-      
-      .proof-gallery-container {
-        transform: none !important;
-        cursor: default;
-        gap: 20px;
-      }
-      
-      .proof-gallery-slide {
-        min-width: calc(50% - 10px);
-        flex: 1;
-      }
-      
-      .proof-gallery-nav {
-        display: none;
-      }
-      
-      .proof-gallery-dots {
-        display: none;
-      }
     }
     
-    /* UPDATED: Three steps with visual boxes */
     .plan-steps { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); 
       gap: 20px; 
       list-style: none; 
-      margin: 40px 0; 
+      margin: 40px auto; 
       padding: 0;
       width: 100%;
+      max-width: 900px;
     }
     
     .plan-step { 
@@ -588,8 +533,6 @@
       border-radius: 12px; 
       padding: 25px 20px; 
       text-align: center;
-      width: 100%;
-      box-sizing: border-box;
       transition: all 0.3s ease;
     }
     
@@ -627,110 +570,163 @@
       line-height: 1.5;
     }
     
-    .relief-section { 
-      padding: 10px 0; 
-      background: transparent;
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .relief-headline { 
-      font-size: 2.8rem; 
-      font-weight: 700; 
-      margin-bottom: 30px; 
-      text-align: center;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    
-    .solution-preview { 
-      background: var(--glass-bg); 
-      border: 2px solid var(--accent-primary); 
-      border-radius: 20px; 
-      padding: 30px; 
-      margin-bottom: 40px; 
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    
-    .stats-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); 
-      gap: 20px; 
-      margin: 30px 0;
-      width: 100%;
-    }
-    
-    .stat-card { 
-      background: var(--card-bg); 
-      border: 1px solid var(--border-subtle); 
-      border-radius: 12px; 
-      padding: 10px; 
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    
-    .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-success); margin-bottom: 5px; }
-    .stat-label { font-size: .9rem; color: var(--text-secondary); font-weight: 600; }
-    
-    .proof-section { 
-      padding: 30px 0;
-      width: 100%;
-      overflow: hidden;
-    }
-    
     .section-title { 
       text-align: center; 
       font-size: 2.5rem; 
       font-weight: 700; 
       margin-bottom: 60px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
     
-    .testimonial-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); 
-      gap: 30px;
-      width: 100%;
-    }
-    
-    .testimonial-card { 
+    .pricing-card { 
       background: var(--glass-bg); 
-      border: 1px solid var(--border-subtle); 
-      border-radius: 16px; 
+      border: 2px solid var(--border-subtle); 
+      border-radius: 20px; 
       padding: 25px; 
-      position: relative;
-      width: 100%;
-      box-sizing: border-box;
+      text-align: center; 
+      position: relative; 
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
     }
     
-    .quote-mark { position: absolute; top: -5px; left: 15px; font-size: 3rem; color: var(--accent-secondary); opacity: .7; }
+    .pricing-card.popular { 
+      border-color: var(--accent-success); 
+    }
     
-    .testimonial-text { 
-      font-style: italic; 
-      color: var(--text-secondary);padding-left: 20px; 
+    .pricing-badge { 
+      position: absolute; 
+      top: -10px; 
+      right: 20px; 
+      padding: 6px 16px; 
+      border-radius: 20px; 
+      font-size: .8rem; 
+      font-weight: 700; 
+      color: #fff;
+    }
+    
+    .popular .pricing-badge { 
+      background: var(--accent-success); 
+    }
+    
+    .pricing-image { 
+      height: 360px; 
+      width: auto; 
+      margin: 0 auto 20px; 
+      display: block; 
+      border-radius: 12px; 
+      max-width: 100%;
+    }
+    
+    .pricing-title { 
+      font-size: 1.8rem; 
+      font-weight: 700; 
       margin-bottom: 15px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
     
-    .testimonial-author { 
-      padding-left: 20px; 
-      color: var(--text-primary); 
-      font-weight: 600; 
-      font-size: .9rem;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+    .feature-list { 
+      background: var(--card-bg); 
+      border: 1px solid var(--border-subtle); 
+      border-radius: 12px; 
+      padding: 18px; 
+      margin-bottom: 15px; 
+      text-align: left;
+      flex-grow: 1;
     }
-
-    /* Free Preview Section Styles */
+    
+    .feature-item { 
+      display: flex; 
+      align-items: flex-start; 
+      margin-bottom: 10px; 
+      font-size: .95rem; 
+      line-height: 1.4;
+    }
+    
+    .feature-icon { 
+      color: var(--accent-success); 
+      margin-right: 8px; 
+      margin-top: 2px; 
+      flex-shrink: 0; 
+    }
+    
+    .pricing-note { 
+      color: var(--text-muted); 
+      font-size: .9rem; 
+      margin-bottom: 15px;
+    }
+    
+    .pricing-cta { 
+      color: #fff; 
+      padding: 16px 30px; 
+      border-radius: 15px; 
+      text-decoration: none; 
+      font-weight: 700; 
+      font-size: 1.1rem; 
+      display: block; 
+      transition: .3s; 
+      margin-bottom: 20px; 
+      text-align: center;
+    }
+    
+    .popular .pricing-cta { 
+      background: var(--gradient-success); 
+    }
+    
+    .guarantee-box { 
+      background: rgba(16,185,129,.15); 
+      border: 1px solid var(--accent-success); 
+      border-radius: 12px; 
+      padding: 15px; 
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    .guarantee-box strong { 
+      color: var(--accent-success); 
+    }
+    
+    .upgrade-links {
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .upgrade-links h4 {
+      color: var(--accent-secondary);
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .upgrade-links p {
+      color: var(--text-secondary);
+      font-size: .9rem;
+      margin-bottom: 15px;
+    }
+    
+    .upgrade-link {
+      display: inline-block;
+      color: var(--accent-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 1px solid var(--accent-secondary);
+      border-radius: 8px;
+      margin: 5px;
+      transition: .3s;
+    }
+    
+    .upgrade-link:hover {
+      background: var(--accent-secondary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    
     .free-preview-section {
       padding: 60px 0;
-      width: 100%;
-      overflow: hidden;
       border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -746,8 +742,6 @@
       font-weight: 700;
       margin-bottom: 20px;
       color: var(--accent-secondary);
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
 
     .free-preview-subtitle {
@@ -757,11 +751,8 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
 
-    /* UPDATED: Changed CTA text */
     .free-preview-cta {
       background: var(--gradient-primary);
       color: #fff;
@@ -774,8 +765,6 @@
       transition: .3s;
       margin-bottom: 20px;
       box-shadow: var(--shadow-medium);
-      word-wrap: break-word;
-      overflow-wrap: break-word;
     }
 
     .free-preview-cta:hover {
@@ -783,27 +772,11 @@
       box-shadow: var(--shadow-strong);
     }
 
-    /* NEW: No CC required text */
     .no-cc-text {
       color: var(--text-muted);
       font-size: 0.9rem;
       font-style: italic;
       margin-top: 10px;
-    }
-
-    /* NEW: Trust badge */
-    .trust-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid var(--accent-success);
-      border-radius: 8px;
-      padding: 8px 16px;
-      margin: 15px auto;
-      font-size: 0.9rem;
-      color: var(--accent-success);
-      font-weight: 600;
     }
 
     .free-preview-features {
@@ -830,195 +803,6 @@
       margin-bottom: 8px;
       font-size: 1rem;
     }
-
-    .free-preview-feature p {
-      color: var(--text-secondary);
-      font-size: .9rem;
-      line-height: 1.4;
-    }
-    
-    .offer-section { 
-      padding: 80px 0; 
-      background: transparent;
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .pricing-card { 
-      background: var(--glass-bg); 
-      border: 2px solid var(--border-subtle); 
-      border-radius: 20px; 
-      padding: 25px 25px 20px; 
-      text-align: center; 
-      position: relative; 
-      overflow: hidden;
-      max-width: 500px;
-      margin: 0 20px;
-      box-sizing: border-box;
-      width: calc(100% - 40px)
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .pricing-card.popular { border-color: var(--accent-success); }
-    
-    .pricing-badge { 
-      position: absolute; 
-      top: -10px; 
-      right: 20px; 
-      padding: 6px 16px; 
-      border-radius: 20px; 
-      font-size: .8rem; 
-      font-weight: 700; 
-      color: #fff;
-      white-space: nowrap;
-    }
-    
-    .popular .pricing-badge { background: var(--accent-success); }
-    
-    .pricing-image { 
-      height: 360px; 
-      width: auto; 
-      margin: 0 auto 20px; 
-      display: block; 
-      border-radius: 12px; 
-      max-width: 100%;
-    }
-    
-    .pricing-title { 
-      font-size: 1.8rem; 
-      font-weight: 700; 
-      margin-bottom: 15px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    
-    .feature-list { 
-      background: var(--card-bg); 
-      border: 1px solid var(--border-subtle); 
-      border-radius: 12px; 
-      padding: 18px; 
-      margin-bottom: 15px; 
-      text-align: left;
-      width: 100%;
-      box-sizing: border-box;
-      flex-grow: 1;
-    }
-    
-    .feature-item { 
-      display: flex; 
-      align-items: flex-start; 
-      margin-bottom: 10px; 
-      font-size: .95rem; 
-      line-height: 1.4;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    
-    .feature-item:last-child { margin-bottom: 0; }
-    .feature-icon { color: var(--accent-success); margin-right: 8px; margin-top: 2px; flex-shrink: 0; }
-    
-    .pricing-note { 
-      color: var(--text-muted); 
-      font-size: .9rem; 
-      margin-bottom: 15px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    
-    .value-summary {
-      font-style: italic;
-      color: var(--text-secondary);
-      font-size: .95rem;
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-    
-    /* UPDATED: Changed CTA text */
-    .pricing-cta { 
-      color: #fff; 
-      padding: 16px 30px; 
-      border-radius: 15px; 
-      text-decoration: none; 
-      font-weight: 700; 
-      font-size: 1.1rem; 
-      display: inline-block; 
-      transition: .3s; 
-      margin-bottom: 20px; 
-      width: 100%; 
-      box-sizing: border-box;
-      text-align: center;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    
-    .popular .pricing-cta { background: var(--gradient-success); }
-    
-    .guarantee-box { 
-      background: rgba(16,185,129,.15); 
-      border: 1px solid var(--accent-success); 
-      border-radius: 12px; 
-      padding: 15px; 
-      margin: 0; 
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      margin-top: auto;
-    }
-    
-    .guarantee-box strong { color: var(--accent-success); }
-    
-    .upgrade-links {
-      background: transparent;
-      border: none;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 20px;
-      text-align: center;
-    }
-    
-    .upgrade-links h4 {
-      color: var(--accent-secondary);
-      font-weight: 700;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-    
-    .upgrade-links p {
-      color: var(--text-secondary);
-      font-size: .9rem;
-      margin-bottom: 15px;
-      line-height: 1.4;
-    }
-    
-    /* UPDATED: Changed upgrade link text */
-    .upgrade-link {
-      display: inline-block;
-      color: var(--accent-secondary);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px 20px;
-      border: 1px solid var(--accent-secondary);
-      border-radius: 8px;
-      margin: 5px;
-      transition: .3s;
-      font-size: .95rem;
-    }
-    
-    .upgrade-link:hover {
-      background: var(--accent-secondary);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-    
-    .faq-section { 
-      padding: 10px 0;
-      width: 100%;
-      overflow: hidden;
-      margin-bottom: 0;
-    }
     
     .faq-grid { 
       display: grid; 
@@ -1028,7 +812,6 @@
       width: 100%;
     }
     
-    /* Updated FAQ Styles for Interactive Accordion */
     .faq-item { 
       background: var(--glass-bg); 
       border: 1px solid var(--border-subtle); 
@@ -1036,8 +819,6 @@
       overflow: hidden;
       transition: all 0.3s ease;
       cursor: pointer;
-      width: 100%;
-      box-sizing: border-box;
     }
 
     .faq-item:hover {
@@ -1056,8 +837,6 @@
       margin: 0;
       padding: 25px;
       color: var(--accent-secondary);
-      word-wrap: break-word;
-      overflow-wrap: break-word;
       position: relative;
       display: flex;
       align-items: center;
@@ -1081,8 +860,6 @@
     .faq-answer { 
       color: var(--text-secondary); 
       line-height: 1.6;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
       padding: 0 25px;
       max-height: 0;
       overflow: hidden;
@@ -1096,181 +873,27 @@
       opacity: 1;
     }
 
-    .faq-item:focus-visible {
-      outline: 2px solid var(--accent-secondary);
-      outline-offset: 2px;
-    }
-
-    .faq-answer p {
-      margin: 0;
-    }
-    
-    .modal { display: none; position: fixed; z-index: 1000; inset: 0; background-color: rgba(0,0,0,.95); backdrop-filter: blur(10px); padding: 20px; box-sizing: border-box; }
-    .modal-content { position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-    .modal-img { max-width: 100%; max-height: calc(100vh - 120px); width: auto; height: auto; object-fit: contain; border-radius: 12px; }
-    .modal-close { position: absolute; top: 10px; right: 20px; color: #fff; font-size: 40px; font-weight: 700; cursor: pointer; z-index: 1001; background: rgba(0,0,0,.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    button:focus, input:focus { outline: 2px solid var(--accent-secondary); outline-offset: 2px; }
-    a:focus { outline: none; }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    * {
-      max-width: 100%;
-    }
-
     @media (max-width: 768px) {
       .container { padding: 0 15px; }
       .logo-container img { height: 36px; }
-      .hero-section { padding: 40px 0 100px; }
       .hero-headline { font-size: 2.5rem; }
       .hero-subtitle { font-size: 1.1rem; }
-      .hero-ctas { 
-        gap: 0.75rem; 
-      }
-      .hero-cta-primary { 
-        width: 100%; 
-        max-width: 300px; 
-        padding: 12px 24px;
-      }
-      .secondary-ctas { 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 0.5rem; 
-      }
-      .image-gallery, .proof-gallery {
-        max-width: 90%;
-      }
-      
       .plan-steps { grid-template-columns: 1fr; }
-      .relief-headline { font-size: 2rem; }
       .section-title { font-size: 2rem; }
-      .value-prop-title { font-size: 1.2rem; }
-      .free-preview-title { font-size: 1.8rem; }
-      .free-preview-features { grid-template-columns: 1fr; gap: 15px; }
-      .stats-grid { grid-template-columns: 1fr; gap: 15px; }
-      .stat-number { font-size: 1.7rem; }
-      .testimonial-grid { grid-template-columns: 1fr; gap: 20px; }
-      
-      .pricing-card {
-        margin: 0;
-        width: 100%;
-        padding: 30px 25px;
-        max-width: none;
-        min-width: 280px;
-      }
-      
       .pricing-image { height: 280px; }
-      .pricing-cta { padding: 16px 25px; font-size: 1rem; }
-      
       .back-to-top { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 1.1rem; }
-
-      .faq-question { 
-        font-size: 1rem;
-        padding: 20px;
-      }
-      
-      .faq-item.active .faq-answer {
-        padding: 0 20px 20px;
-      }
-      
-      .scroll-cue {
-        bottom: 20px;
-      }
     }
     
     @media (max-width: 480px) {
-      .container { padding: 0 18px; }
-      .hero-headline { font-size: 2rem; padding: 0 15px; }
-      .relief-headline { font-size: 1.7rem; }
+      .hero-headline { font-size: 2rem; }
       .section-title { font-size: 1.7rem; }
-      .free-preview-title { font-size: 1.6rem; }
-      
-      .pricing-card { 
-        padding: 25px 20px;
-        min-width: 260px;
-      }
-      
       .pricing-image { height: 220px; }
-      .pricing-cta { padding: 14px 20px; font-size: .95rem; }
-      
       .back-to-top { width: 45px; height: 45px; bottom: 15px; right: 15px; font-size: 1rem; }
-
-      .faq-question { 
-        font-size: 0.95rem;
-        padding: 18px;
-      }
-      
-      .faq-item.active .faq-answer {
-        padding: 0 18px 18px;
-      }
-    }
-    
-    @media (max-width: 360px) { 
-      .container { padding: 0 10px; }
-      .hero-cta-primary { padding: 10px 20px; }
-      
-      .pricing-card { 
-        padding: 20px 15px; 
-        border-radius: 12px;
-        min-width: 240px;
-      }
-      
-      .pricing-image { 
-        height: 140px; 
-        margin-bottom: 12px;
-      }
-      
-      .pricing-title {
-        font-size: 1.2rem;
-        margin-bottom: 6px;
-      }
-      
-      .feature-list {
-        padding: 15px 12px;
-        margin-bottom: 10px;
-      }
-      
-      .feature-item {
-        margin-bottom: 8px;
-        font-size: 0.85rem;
-        line-height: 1.3;
-      }
-      
-      .pricing-note {
-        font-size: 0.8rem;
-        margin-bottom: 12px;
-      }
-      
-      .pricing-cta { 
-        padding: 12px 18px; 
-        font-size: 0.9rem;
-        margin-bottom: 10px;
-        border-radius: 8px;
-      }
-      
-      .guarantee-box {
-        padding: 12px;
-        font-size: 0.82rem;
-        line-height: 1.3;
-        margin: 12px 0;
-      }
-
-      .faq-question { 
-        font-size: 0.9rem;
-        padding: 15px;
-      }
-      
-      .faq-item.active .faq-answer {
-        padding: 0 15px 15px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-gradient"></div>
 
   <!-- Back to Top Button -->
   <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">↑</button>
@@ -1280,202 +903,142 @@
     <div class="container">
       <nav class="header-content" role="navigation" aria-label="Main navigation">
         <div class="logo-container">
-          <a href="https://925adhd.com" aria-label="925 ADHD Home" class="home-link">
-            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" width="175" height="175" loading="eager" fetchpriority="high" decoding="async">
+          <a href="https://925adhd.com" aria-label="925 ADHD Home">
+            <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/SmartSelect_20241218_055052_Gallery.png/:/rs=h:175,m" alt="925 ADHD Logo" width="175" height="175">
           </a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- Main -->
-<main id="main" role="main">
-  <!-- HERO Section -->
-  <section class="hero-section" aria-labelledby="hero-title">
-    <h1 id="hero-title" class="hero-headline">
-      Go From <span style="text-decoration: underline; text-decoration-color: red; text-decoration-thickness: 3px; text-underline-offset: 3px;">Too</span> Many Tabs to <br>
-      <span style="font-size: 1.2em; color: #10b981 !important; -webkit-text-fill-color: #10b981 !important; font-weight: 900;">I Just Got Paid</span>
-    </h1>
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-headline">
+          Go From <span style="text-decoration: underline; text-decoration-color: red; text-decoration-thickness: 3px; text-underline-offset: 3px;">Too</span> Many Tabs to <br>
+          <span style="font-size: 1.2em; color: #10b981 !important; -webkit-text-fill-color: #10b981 !important; font-weight: 900;">I Just Got Paid</span>
+        </h1>
 
-    <div class="hero-badge" aria-hidden="true">🧠 Built by someone with ADHD</div>
+        <div class="hero-badge">🧠 Built by someone with ADHD</div>
 
-     <p class="hero-subtitle" style="font-size: .95rem; margin: 10px 0 20px; text-align: center;">
-  Stop researching. Start earning.
-</p>
+        <p class="hero-subtitle" style="font-size: .95rem; margin: 10px auto 20px; text-align: center; width: 100%; max-width: 720px;">
+          Stop researching. Start earning.
+        </p>
 
-
-    
-        <!-- Swipeable Image Gallery -->
-        <div class="image-gallery" role="region" aria-label="App preview gallery">
+        <div class="image-gallery">
           <div class="gallery-container" id="galleryContainer">
             <div class="gallery-slide">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/side%20panel-709af1d.png" 
-                   alt="925 ADHD App Side Panel Interface" 
-                   loading="lazy" 
-                   decoding="async"
-                   width="640" 
-                   height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/side%20panel-709af1d.png" alt="App Interface">
             </div>
             <div class="gallery-slide">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" 
-                   alt="925 ADHD App Package Preview" 
-                   loading="lazy" 
-                   decoding="async"
-                   width="640" 
-                   height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p1-c3a36cd.png" alt="App Preview">
             </div>
             <div class="gallery-slide">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" 
-                   alt="925 ADHD App Properties Preview" 
-                   loading="eager" 
-                   fetchpriority="high" 
-                   decoding="async"
-                   width="640" 
-                   height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/p2-210f1f5.png" alt="Properties">
             </div>
             <div class="gallery-slide">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/cash.png" 
-                   alt="925 ADHD App Earnings Dashboard" 
-                   loading="lazy" 
-                   decoding="async"
-                   width="640" 
-                   height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/cash.png" alt="Earnings Dashboard">
             </div>
             <div class="gallery-slide">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/review.png" 
-                   alt="925 ADHD App Review Preview" 
-                   loading="lazy" 
-                   decoding="async"
-                   width="640" 
-                   height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/review.png" alt="Review Preview">
             </div>
             <div class="gallery-slide">
-              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/favorite.png" 
-                   alt="925 ADHD App Favorite Sites" 
-                   loading="lazy" 
-                   decoding="async"
-                   width="640" 
-                   height="360">
+              <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/favorite.png" alt="Favorite Sites">
             </div>
           </div>
           
-          <!-- Navigation arrows -->
-          <button class="gallery-nav prev" onclick="changeSlide(-1, 'hero')" aria-label="Previous image">‹</button>
-          <button class="gallery-nav next" onclick="changeSlide(1, 'hero')" aria-label="Next image">›</button>
+          <button class="gallery-nav prev" onclick="changeSlide(-1)">‹</button>
+          <button class="gallery-nav next" onclick="changeSlide(1)">›</button>
         </div>
 
-        <!-- Gallery dots -->
-        <div class="gallery-dots" role="tablist" aria-label="Image gallery navigation">
-          <span class="dot active" onclick="currentSlide(1, 'hero')" role="tab" aria-label="Image 1" tabindex="0"></span>
-          <span class="dot" onclick="currentSlide(2, 'hero')" role="tab" aria-label="Image 2" tabindex="0"></span>
-          <span class="dot" onclick="currentSlide(3, 'hero')" role="tab" aria-label="Image 3" tabindex="0"></span>
-          <span class="dot" onclick="currentSlide(4, 'hero')" role="tab" aria-label="Image 4" tabindex="0"></span>
-          <span class="dot" onclick="currentSlide(5, 'hero')" role="tab" aria-label="Image 5" tabindex="0"></span>
-          <span class="dot" onclick="currentSlide(6, 'hero')" role="tab" aria-label="Image 6" tabindex="0"></span>
+        <div class="gallery-dots">
+          <span class="dot active" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
         </div>
 
-               <div style="text-align: center; margin-bottom: 20px;">
-          <p style="color: var(--text-muted); font-size: .85rem; margin: 10px 0 20px; font-style: italic;">
+        <div style="width: 100%;">
+          <p style="color: var(--text-muted); font-size: .85rem; margin: 10px 0 20px; font-style: italic; text-align: center;">
             *No rabbit holes. Just clear next steps.*
           </p>
           
-           <!-- NEW: Value Proposition with Bullet Points -->
-        <div class="value-prop-box">
-          <div class="value-prop-title">One App.<br>Zero Overwhelm.</div>
-          <ul class="value-prop-list">
-            <li class="value-prop-item">
-              <span class="value-prop-icon">✓</span>
-              <span><strong>50+ Flexible vetted ways to earn online</strong> — real, legit, stress-free.</span>
-            </li>
-            <li class="value-prop-item">
-              <span class="value-prop-icon">✓</span>
-              <span><strong>Honest reviews</strong> — real expectations, no hype</span>
-            </li>
-            <li class="value-prop-item">
-              <span class="value-prop-icon">✓</span>
-              <span><strong>Add your favorites</strong> — keep track of your best gigs that work for your brain.</span>
-            </li>
-          </ul>
-        </div>
+          <div class="value-prop-box">
+            <div class="value-prop-title">One App.<br>Zero Overwhelm.</div>
+            <ul class="value-prop-list">
+              <li class="value-prop-item">
+                <span class="value-prop-icon">✓</span>
+                <span><strong>50+ Flexible vetted ways to earn online</strong> — real, legit, stress-free.</span>
+              </li>
+              <li class="value-prop-item">
+                <span class="value-prop-icon">✓</span>
+                <span><strong>Honest reviews</strong> — real expectations, no hype</span>
+              </li>
+              <li class="value-prop-item">
+                <span class="value-prop-icon">✓</span>
+                <span><strong>Add your favorites</strong> — keep track of your best gigs.</span>
+              </li>
+            </ul>
+          </div>
 
-          <p class="visually-hidden">
-            Stop research spirals and start earning with ADHD-friendly, vetted websites and step-by-step guidance.
-          </p>
-          
-          <!-- Main CTA -->
           <div class="hero-ctas">
-            <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" 
-               target="_blank" 
-               rel="noopener" 
-               class="hero-cta-primary" 
-               onclick="trackCTA('hero','Basic',9.25)" 
-               aria-label="Start earning for $9.25">
-              🚀 Start Today!
-            </a>
-            
-            <div class="social-proof" aria-label="Key purchase benefits">
+            <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="hero-cta-primary">🚀 Start Today!</a>
+            <div class="social-proof">
               One-Time Payment • No subscription Anxiety<br>🔒 30-day guarantee 
             </div>
           </div>
         </div>
         
         <div class="secondary-ctas">
-                   <a href="#faq-section" class="hero-cta-secondary" aria-label="Jump to FAQ section">
-            See FAQ ↓
-          </a>
+          <a href="#faq" class="hero-cta-secondary">See FAQ ↓</a>
         </div>
       </div>
-
-    <!-- PROOF: Payment Evidence -->
-    <section class="container">
-      <article id="proof" class="proof-section">
-        <div style="margin-top: 20px; text-align: center;">
-          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/testimonials.png" 
-               alt="Customer reviews and testimonials" 
-               style="width:100%; max-width:800px; height:auto; border-radius:12px;" 
-               loading="lazy" 
-               decoding="async">
-        </div>
-        <div style="text-align:center; margin-top:20px;">
-          <p style="color: var(--text-muted); font-size: .85rem; font-style: italic;">
-            *Join other neurodivergent minds who've already cut through the noise of online work.*
-          </p>
-        </div>
-      </article>
     </section>
 
-   <!-- 3-Step Solution -->
-<div class="container">
-  <div style="text-align: center; margin: 50px 0;">
-    <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--accent-success); margin-bottom: 20px;">Three Steps to Your First Dollar</h2>
-    <ul class="plan-steps">
-      <li class="plan-step">
-        <div class="plan-step-number">1</div>
-        <div class="plan-step-title">We Did the Digging</div>
-        <div class="plan-step-desc">No scams. No fluff. Just <strong>50+ vetted, real-money sites</strong> sorted for speed.</div>
-      </li>
-      <li class="plan-step">
-        <div class="plan-step-number">2</div>
-        <div class="plan-step-title">You Pick the Category</div>
-        <div class="plan-step-desc"><strong>Surveys. Field tasks. Creative.</strong> Everything’s grouped. Pick what fits <em>you</em> — no guessing.</div>
-      </li>
-      <li class="plan-step">
-        <div class="plan-step-number">3</div>
-        <div class="plan-step-title">Start Earning Today</div>
-        <div class="plan-step-desc">Follow the steps, get paid. <strong>$3–$14/hr depending on the site.</strong> Clear. Real. Now.</div>
-      </li>
-    </ul>
-  </div>
-</div>
+    <section class="container" style="padding: 60px 0;">
+      <div style="margin-top: 20px; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/testimonials.png" 
+             alt="Customer reviews and testimonials" 
+             style="width:100%; max-width:600px; height:auto; border-radius:12px; display: block; margin: 0 auto;" 
+             loading="lazy">
+      </div>
+      <div style="text-align:center; margin-top:20px;">
+        <p style="color: var(--text-muted); font-size: .85rem; font-style: italic;">
+          *Join other neurodivergent minds who've already cut through the noise of online work.*
+        </p>
+      </div>
+    </section>
 
+    <section class="container" style="padding: 60px 0;">
+      <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: var(--accent-success); margin-bottom: 40px;">Three Steps to Your First Dollar</h2>
+        <ul class="plan-steps">
+          <li class="plan-step">
+            <div class="plan-step-number">1</div>
+            <div class="plan-step-title">We Did the Digging</div>
+            <div class="plan-step-desc">No scams. No fluff. Just <strong>50+ vetted, real-money sites</strong> sorted for speed.</div>
+          </li>
+          <li class="plan-step">
+            <div class="plan-step-number">2</div>
+            <div class="plan-step-title">You Pick the Category</div>
+            <div class="plan-step-desc"><strong>Surveys. Field tasks. Creative.</strong> Everything's grouped. Pick what fits <em>you</em>.</div>
+          </li>
+          <li class="plan-step">
+            <div class="plan-step-number">3</div>
+            <div class="plan-step-title">Start Earning Today</div>
+            <div class="plan-step-desc">Follow the steps, get paid. <strong>$3–$14/hr depending on the site.</strong></div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-    <!-- Who It's For Section -->
-    <section style="padding:60px 0;" aria-labelledby="who-its-for">
+    <section style="padding: 60px 0;">
       <div class="container">
-        <h2 id="who-its-for" class="section-title">Is This App Right For You? 🤔</h2>
+        <h2 class="section-title">Is This App Right For You? 🤔</h2>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; max-width:800px; margin:0 auto;">
           
-          <!-- Yes Column -->
           <div style="border:2px solid var(--accent-success); border-radius:16px; padding:30px;">
             <h3 style="color: var(--accent-success); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">✅ Yes if you:</h3>
             <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
@@ -1487,7 +1050,6 @@
             </ul>
           </div>
           
-          <!-- Not For You Column -->
           <div style="border:1px solid var(--border-subtle); border-radius:16px; padding:30px;">
             <h3 style="color: var(--accent-danger); font-size:1.3rem; font-weight:700; margin-bottom:20px; text-align: center;">❌ Not if you:</h3>
             <ul style="list-style:none; padding:0; color: var(--text-secondary); line-height: 1.8;">
@@ -1503,139 +1065,101 @@
       </div>
     </section>
 
-    <!-- OFFER: Choose Your Package -->
-    <div class="container">
-      <article id="pricing" class="offer-section">
-        <header>
-          <h2 class="section-title">Get Started Today</h2>
-        </header>
+    <section style="padding: 80px 0;">
+      <div class="container">
+        <h2 class="section-title">Get Started Today</h2>
 
-        <!-- Single Basic Pricing Card -->
-        <div id="Basic-package" class="pricing-card popular">
+        <div class="pricing-card popular">
           <div class="pricing-badge">MOST POPULAR</div>
        
-          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Basic App package preview" class="pricing-image" loading="lazy" decoding="async" width="640" height="360">
-           <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
+          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/app%20package.png" alt="Basic App package" class="pricing-image">
+          <div class="pricing-note">One‑time payment • 30‑day guarantee</div>
           
-          <!-- UPDATED: Changed CTA text -->
-          <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta" onclick="trackCTA('pricing','basic',9.25)" aria-label="Unlock the App for $9.25">Basic App — Just $9.25</a>
+          <a href="https://buy.stripe.com/28E3cw1B33logABev67Zu02" target="_blank" rel="noopener" class="pricing-cta">Basic App — Just $9.25</a>
           
           <div class="feature-list">
             <div class="feature-item"><span class="feature-icon">✓</span><span>Honest Site Reviews (No BS, Just Facts)</span></div>
-            <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community — a space just for members who get it</span></div>
-            <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access (No Research Anxiety Ever Again)</span></div>
+            <div class="feature-item"><span class="feature-icon">✓</span><span>Private Discord Community</span></div>
+            <div class="feature-item"><span class="feature-icon">✓</span><span>Lifetime Access</span></div>
           </div>
           
           <div class="guarantee-box">
-            🔒 <strong>Money-Back Guarantee:</strong> Full refund if it doesn't cut through decision paralysis — no forms, no hoops.
+            🔒 <strong>Money-Back Guarantee:</strong> Full refund if it doesn't cut through decision paralysis.
           </div>
         </div>
 
-        <!-- Upgrade Links Section -->
         <div class="upgrade-links">
           <h4>Want More Tools & Features?</h4>
           <p>Upgrade to unlock ADHD productivity tools, personalized site matching, and entrepreneur resources.</p>
           <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="upgrade-link" onclick="trackCTA('pricing','pro',29)">Unlock Pro - $29</a>
-            <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="upgrade-link" onclick="trackCTA('pricing','entrepreneur',129)">Unlock Accelerator - $129</a>
+            <a href="https://buy.stripe.com/00w3cw5RjaNQbgh0Eg7Zu03" target="_blank" rel="noopener" class="upgrade-link">Unlock Pro - $29</a>
+            <a href="https://buy.stripe.com/00w4gA1B3cVY1FH2Mo7Zu04" target="_blank" rel="noopener" class="upgrade-link">Unlock Accelerator - $129</a>
           </div>
-        </div>
-
-       
-    <!-- FREE PREVIEW Section -->
-<section class="free-preview-section" aria-labelledby="free-preview-title">
-  <div class="container">
-    <div class="free-preview-container">
-      
-      <img 
-        src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/final%20free%20logo.png" 
-        alt="925 ADHD Logo" 
-        style="display:block; margin: 0 auto 1rem; max-width: 180px;"
-      >
-      
-      <h2 id="free-preview-title" class="free-preview-title">
-        Still Unsure If This Is Right For You? Try 
-        <span style="font-size: 1.2em; color: #10b981 !important; -webkit-text-fill-color: #10b981 !important; font-weight: 900;">
-          FREE
-        </span>
-        First
-      </h2>
-
-      <p class="free-preview-subtitle">
-        Quick test drive with 10+ vetted sites. See if our zero-overwhelm approach works for your brain.
-      </p>
-      
-      <a href="https://free.925adhd.com" 
-         target="_blank" 
-         rel="noopener" 
-         class="free-preview-cta" 
-         onclick="trackCTA('free-preview','mini-version',0)"
-         aria-label="Try the free version">
-        🔍 Try Free Version
-      </a>
-
-      <!-- No CC required text -->
-      <p class="no-cc-text">No credit card needed. Just clarity.</p>
-
-      <div class="free-preview-features">
-        <div class="free-preview-feature">
-          <h4>✨ 10+ Pre-Selected Sites</h4>
-        </div>
-        <div class="free-preview-feature">
-          <h4>🎯 Zero Research Required</h4>
         </div>
       </div>
+    </section>
 
-      <p style="color: var(--text-muted); font-size: .9rem; margin-top: 25px; font-style: italic;">
-        Like it? Upgrade to all 50+ sites anytime.
-      </p>
-    </div>
-  </div>
-</section>
-
-    <!-- FAQ - 5 Critical Questions Only -->
-    <section class="faq-section" aria-labelledby="faq-title">
+    <section class="free-preview-section">
       <div class="container">
-        <article id="faq-section" class="faq-section"> 
-          <h2 id="faq-title" class="section-title">Quick Answers</h2>
-          <div class="faq-grid">
-            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="faq-question">How fast can I start earning?</div>
-              <div class="faq-answer">
-                Most people pick their first site within 30 minutes. Some sites pay within 48-72 hours, others take 1-2 weeks but offer higher rates.
-              </div>
+        <div class="free-preview-container">
+          
+          <img src="https://img1.wsimg.com/isteam/ip/e5c52ac6-7189-421d-9701-bbc6d6a027fc/final%20free%20logo.png" alt="Logo" style="display:block; margin: 0 auto 1rem; max-width: 180px;">
+          
+          <h2 class="free-preview-title">
+            Still Unsure? Try <span style="font-size: 1.2em; color: #10b981 !important; -webkit-text-fill-color: #10b981 !important; font-weight: 900;">FREE</span> First
+          </h2>
+
+          <p class="free-preview-subtitle">
+            Quick test drive with 10+ vetted sites. See if our zero-overwhelm approach works for your brain.
+          </p>
+          
+          <a href="https://free.925adhd.com" target="_blank" rel="noopener" class="free-preview-cta">🔍 Try Free Version</a>
+
+          <p class="no-cc-text">No credit card needed. Just clarity.</p>
+
+          <div class="free-preview-features">
+            <div class="free-preview-feature">
+              <h4>✨ 10+ Pre-Selected Sites</h4>
             </div>
-            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="faq-question">Do I need experience?</div>
-              <div class="faq-answer">
-                No. We cover requirements, difficulty level, and time to first payout for each site. Complete beginners welcome.
-              </div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="faq-question">Will this work with my ADHD?</div>
-              <div class="faq-answer">
-                Yes—designed by someone with ADHD for ADHD brains. Short sessions, single-focus layouts, clear next steps. No decision paralysis.
-              </div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="faq-question">How do I know you're legit?</div>
-              <div class="faq-answer">
-                Stripe handles all payments (same as Netflix, Uber). Instant access, no subscriptions. 30-day money-back guarantee. Zero risk.
-              </div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(this)" role="button" tabindex="0" aria-expanded="false">
-              <div class="faq-question">What does lifetime access mean?</div>
-              <div class="faq-answer">
-                Lifetime access to all content and site directory. No subscriptions ever. If hosting ends, you get downloadable offline version.
-              </div>
+            <div class="free-preview-feature">
+              <h4>🎯 Zero Research Required</h4>
             </div>
           </div>
-        </article>
+
+          <p style="color: var(--text-muted); font-size: .9rem; margin-top: 25px; font-style: italic;">
+            Like it? Upgrade to all 50+ sites anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0;" id="faq">
+      <div class="container">
+        <h2 class="section-title">Quick Answers</h2>
+        <div class="faq-grid">
+          <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">How fast can I start earning?</div>
+            <div class="faq-answer">
+              Most people pick their first site within 30 minutes. Some sites pay within 48-72 hours, others take 1-2 weeks but offer higher rates.
+            </div>
+          </div>
+          <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">Do I need experience?</div>
+            <div class="faq-answer">
+              No. We cover requirements, difficulty level, and time to first payout for each site. Complete beginners welcome.
+            </div>
+          </div>
+          <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">Will this work with my ADHD?</div>
+            <div class="faq-answer">
+              Yes—designed by someone with ADHD for ADHD brains. Short sessions, single-focus layouts, clear next steps.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
- 
   <!-- Footer -->
   <footer style="background: var(--secondary-bg); padding: 20px 0 70px; border-top: 1px solid var(--border-subtle);">
     <div class="container">
@@ -1652,218 +1176,31 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11509175122"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
-    gtag('js', new Date());
-    gtag('config', 'AW-11509175122');
-    gtag('config', 'G-XXXXXXXXXX');
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.gallery-slide');
+    const dots = document.querySelectorAll('.dot');
 
-    function trackCTA(location, package_type, amount){
-      gtag('event','click_cta',{event_category:'engagement',event_label: location + '_' + package_type, value: amount || 0});
-    }
-
-    (function(){
-      var depths=[25,50,75,90], tracked=[];
-      window.addEventListener('scroll', function(){
-        var percent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-        depths.forEach(function(d){
-          if(percent >= d && tracked.indexOf(d) === -1){
-            tracked.push(d);
-            gtag('event','scroll_depth',{event_category:'engagement',event_label: d + '%', value: d});
-          }
-        });
-      });
-    })();
-
-    // NEW: Scroll cue functionality
-    function smoothScrollToNext() {
-      const heroSection = document.querySelector('.hero-section');
-      const nextSection = heroSection.nextElementSibling;
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    // Hide scroll cue after user scrolls
-    window.addEventListener('scroll', function() {
-      const scrollCue = document.querySelector('.scroll-cue');
-      if (window.scrollY > 100) {
-        scrollCue.classList.add('hidden');
-      }
-    });
-
-    // Gallery functionality
-    const galleries = {
-      hero: {
-        currentSlideIndex: 0,
-        slides: document.querySelectorAll('.gallery-slide'),
-        dots: document.querySelectorAll('.dot'),
-        container: document.getElementById('galleryContainer')
-      },
-      proof: {
-        currentSlideIndex: 0,
-        slides: document.querySelectorAll('.proof-gallery-slide'),
-        dots: document.querySelectorAll('.proof-dot'),
-        container: document.getElementById('proofGalleryContainer')
-      }
-    };
-
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        galleries.hero.currentSlideIndex = 1;
-        const translateX = -100;
-        galleries.hero.container.style.transform = `translateX(${translateX}%)`;
-        
-        galleries.hero.dots.forEach(dot => dot.classList.remove('active'));
-        if (galleries.hero.dots[1]) {
-          galleries.hero.dots[1].classList.add('active');
-        }
-      }, 100);
-    });
-    
-    let startX = 0;
-    let startY = 0;
-    let endX = 0;
-    let endY = 0;
-    let isDragging = false;
-    let isHorizontalSwipe = false;
-    let currentGallery = null;
-
-    function showSlide(n, galleryType) {
-      const gallery = galleries[galleryType];
-      if (!gallery || !gallery.slides.length) return;
+    function showSlide(n) {
+      if (n >= slides.length) currentSlideIndex = 0;
+      if (n < 0) currentSlideIndex = slides.length - 1;
       
-      if (n >= gallery.slides.length) gallery.currentSlideIndex = 0;
-      if (n < 0) gallery.currentSlideIndex = gallery.slides.length - 1;
+      const container = document.getElementById('galleryContainer');
+      container.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
       
-      const translateX = -gallery.currentSlideIndex * 100;
-      gallery.container.style.transform = `translateX(${translateX}%)`;
-      
-      gallery.dots.forEach(dot => dot.classList.remove('active'));
-      if (gallery.dots[gallery.currentSlideIndex]) {
-        gallery.dots[gallery.currentSlideIndex].classList.add('active');
-      }
-      
-      gtag('event','gallery_slide_change',{event_category:'engagement',event_label: galleryType + '_slide_' + (gallery.currentSlideIndex + 1), value: gallery.currentSlideIndex + 1});
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentSlideIndex].classList.add('active');
     }
 
-    function changeSlide(direction, galleryType) {
-      const gallery = galleries[galleryType];
-      if (!gallery) return;
-      gallery.currentSlideIndex += direction;
-      showSlide(gallery.currentSlideIndex, galleryType);
+    function changeSlide(direction) {
+      currentSlideIndex += direction;
+      showSlide(currentSlideIndex);
     }
 
-    function currentSlide(n, galleryType) {
-      const gallery = galleries[galleryType];
-      if (!gallery) return;
-      gallery.currentSlideIndex = n - 1;
-      showSlide(gallery.currentSlideIndex, galleryType);
+    function currentSlide(n) {
+      currentSlideIndex = n - 1;
+      showSlide(currentSlideIndex);
     }
-
-    Object.keys(galleries).forEach(galleryType => {
-      const gallery = galleries[galleryType];
-      if (gallery.container) {
-        gallery.container.addEventListener('touchstart', (e) => {
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-          isDragging = true;
-          isHorizontalSwipe = false;
-          currentGallery = galleryType;
-        });
-
-        gallery.container.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-          
-          const currentX = e.touches[0].clientX;
-          const currentY = e.touches[0].clientY;
-          const diffX = Math.abs(currentX - startX);
-          const diffY = Math.abs(currentY - startY);
-          
-          if (diffX > diffY && diffX > 10) {
-            isHorizontalSwipe = true;
-            e.preventDefault();
-          } else if (diffY > diffX && diffY > 10) {
-            isDragging = false;
-            isHorizontalSwipe = false;
-          }
-        });
-
-        gallery.container.addEventListener('touchend', (e) => {
-          if (!isDragging || !isHorizontalSwipe) return;
-          endX = e.changedTouches[0].clientX;
-          endY = e.changedTouches[0].clientY;
-          handleSwipe(galleryType);
-          isDragging = false;
-          isHorizontalSwipe = false;
-          currentGallery = null;
-        });
-
-        gallery.container.addEventListener('mousedown', (e) => {
-          startX = e.clientX;
-          isDragging = true;
-          currentGallery = galleryType;
-          gallery.container.style.cursor = 'grabbing';
-        });
-
-        gallery.container.addEventListener('mousemove', (e) => {
-          if (!isDragging || currentGallery !== galleryType) return;
-          e.preventDefault();
-        });
-
-        gallery.container.addEventListener('mouseup', (e) => {
-          if (!isDragging || currentGallery !== galleryType) return;
-          endX = e.clientX;
-          handleSwipe(galleryType);
-          isDragging = false;
-          currentGallery = null;
-          gallery.container.style.cursor = 'grab';
-        });
-
-        gallery.container.addEventListener('mouseleave', () => {
-          if (isDragging && currentGallery === galleryType) {
-            isDragging = false;
-            currentGallery = null;
-            gallery.container.style.cursor = 'grab';
-          }
-        });
-
-        gallery.container.style.cursor = 'grab';
-      }
-
-      gallery.dots.forEach((dot, index) => {
-        dot.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            currentSlide(index + 1, galleryType);
-          }
-        });
-      });
-    });
-
-    function handleSwipe(galleryType) {
-      const swipeThreshold = 50;
-      const diff = startX - endX;
-      
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-          changeSlide(1, galleryType);
-        } else {
-          changeSlide(-1, galleryType);
-        }
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft' && currentGallery) {
-        changeSlide(-1, currentGallery);
-      } else if (e.key === 'ArrowRight' && currentGallery) {
-        changeSlide(1, currentGallery);
-      }
-    });
 
     function toggleFAQ(element) {
       const isActive = element.classList.contains('active');
@@ -1871,87 +1208,31 @@
       document.querySelectorAll('.faq-item.active').forEach(item => {
         if (item !== element) {
           item.classList.remove('active');
-          item.setAttribute('aria-expanded', 'false');
         }
       });
       
       if (isActive) {
         element.classList.remove('active');
-        element.setAttribute('aria-expanded', 'false');
       } else {
         element.classList.add('active');
-        element.setAttribute('aria-expanded', 'true');
-        
-        const questionText = element.querySelector('.faq-question').textContent.replace(/▼/g, '').trim();
-        gtag('event', 'faq_expand', {
-          event_category: 'engagement',
-          event_label: questionText.substring(0, 50) + (questionText.length > 50 ? '...' : ''),
-          value: 1
-        });
       }
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleFAQ(this);
-          }
-        });
-      });
-    });
-
-    function scrollToTop(){ 
+    function scrollToTop() { 
       window.scrollTo({ top: 0, behavior: 'smooth' }); 
-      gtag('event','back_to_top',{event_category:'navigation',event_label:'back_to_top_button'}); 
     }
     
-    function toggleBackToTop(){ 
-      const btn=document.querySelector('.back-to-top'); 
-      const y=window.pageYOffset||document.documentElement.scrollTop; 
-      if(y>300){btn.classList.add('visible')} else {btn.classList.remove('visible')} 
+    function toggleBackToTop() { 
+      const btn = document.querySelector('.back-to-top'); 
+      const y = window.pageYOffset || document.documentElement.scrollTop; 
+      if(y > 300) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
     }
     
     window.addEventListener('scroll', toggleBackToTop);
-
-    function openModal(src){ 
-      const m=document.getElementById('imageModal'); 
-      const img=document.getElementById('modalImg'); 
-      m.style.display='block'; 
-      m.setAttribute('aria-hidden','false'); 
-      img.src=src; 
-      document.body.style.overflow='hidden'; 
-      document.querySelector('.modal-close').focus(); 
-      gtag('event','open_proof_modal',{event_category:'engagement',event_label:'proof_image'}); 
-    }
-    
-    function closeModal(){ 
-      const m=document.getElementById('imageModal'); 
-      m.style.display='none'; 
-      m.setAttribute('aria-hidden','true'); 
-      document.body.style.overflow='auto'; 
-    }
-    
-    document.addEventListener('keydown', function(e){ 
-      if(e.key==='Escape' && document.getElementById('imageModal').style.display==='block'){ 
-        closeModal(); 
-      }
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click', function(e){
-        var id=this.getAttribute('href'); 
-        if(id.length<2) return; 
-        var target=document.querySelector(id); 
-        if(!target) return; 
-        e.preventDefault();
-        var header=document.querySelector('.header'); 
-        var offset=header?header.offsetHeight:70; 
-        var top=target.getBoundingClientRect().top + window.pageYOffset - offset - 15;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      });
-    });
   </script>
 </body>
 </html>
